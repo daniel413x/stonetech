@@ -7,6 +7,7 @@ import Context from './context/context';
 import AppRouter from './components/routers/AppRouter';
 import Navbar from './components/Navbar/Navbar';
 import { autoAuth } from './http/userAPI';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const {
@@ -38,6 +39,7 @@ function App() {
           publicRoutes={indexPublicRoutes}
         />
       </div>
+      <Footer />
     </Router>
   );
 }

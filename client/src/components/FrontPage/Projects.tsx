@@ -8,6 +8,7 @@ import displayImageThree from '../../assets/interior-2.jpg';
 import displayImageFour from '../../assets/interior-13.jpg';
 import displayImageFive from '../../assets/interior-27.jpg';
 import displayImageSix from '../../assets/interior-4.jpg';
+import Dots from '../Dots';
 import List from '../List';
 import Button from '../Button';
 import AnchorButton from '../AnchorButton';
@@ -41,11 +42,7 @@ function ProjectForDisplay({
           </span>
         </div>
         <div className="title-row">
-          <div className="dots">
-            <div className="dot" />
-            <div className="dot" />
-            <div className="dot" />
-          </div>
+          <Dots />
           <NavLink
             to="/"
             className="title-text"
@@ -61,11 +58,7 @@ function ProjectForDisplay({
 }
 
 function Projects() {
-  const [projects, setProjects] = useState<{
-    location: string;
-    title: string;
-    image: string;
-  }[]>([]);
+  const [projects, setProjects] = useState<ProjectForDisplayProps[]>([]);
   const firstBatch = [
     {
       location: 'Vienna, Virginia',
@@ -128,7 +121,6 @@ function Projects() {
       </div>
       <div className="projects-ul-wrapper">
         <List
-          className="projects-ul"
           items={projects}
           renderAs={({ location, title, image }) => (
             <li key={title}>

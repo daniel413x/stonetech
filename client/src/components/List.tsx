@@ -4,7 +4,8 @@ interface ListProps<T> {
   items: T[];
   renderAs: (list: T, index?: number) => ReactNode;
   className?: string;
-  children?: ReactElement | ReactElement[];
+  FirstItem?: ReactElement | ReactElement[];
+  LastItem?: ReactElement | ReactElement[];
   id?: string;
 }
 
@@ -12,21 +13,24 @@ function List<T>({
   items,
   renderAs,
   className,
-  children,
   id,
+  FirstItem,
+  LastItem,
 }: ListProps<T>) {
   return (
     <ul className={`${className}`} id={id}>
+      {FirstItem}
       {items?.map(renderAs)}
-      {children}
+      {LastItem}
     </ul>
   );
 }
 
 List.defaultProps = {
   className: '',
-  children: false,
   id: '',
+  FirstItem: false,
+  LastItem: false,
 };
 
 export default List;

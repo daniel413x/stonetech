@@ -30,3 +30,8 @@ export interface IBlogPost {
   title: string;
   body: string[];
 }
+
+export interface INavButton {
+  to: string;
+  label: string;
+}

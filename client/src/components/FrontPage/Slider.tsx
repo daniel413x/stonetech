@@ -62,7 +62,7 @@ function FrontPageSlider() {
       <div className="bg">
         <div className="fg-header">
           <h1>
-            Stonehaus
+            Steinhaus
           </h1>
           <h2>
             High-level design
