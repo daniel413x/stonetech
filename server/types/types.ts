@@ -10,12 +10,15 @@ export interface IEmployee {
 
 export interface IProject {
   id: string;
-  title: string;
+  galleryTitle: string;
+  client: string;
+  fullTitle: string;
   images: string[];
   thumbnail: string;
   info: [string, string][];
   seniorArchitect?: IEmployee;
   body?: string[];
+  location: string;
 }
 
 export interface IBlogPost {

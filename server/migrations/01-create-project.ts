@@ -2,19 +2,36 @@ import { UUIDV4 } from 'sequelize';
 
 export default {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Project', {
-    title: {
+    galleryTitle: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    fullTitle: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    client: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    location: {
+      allowNull: false,
       type: Sequelize.STRING,
     },
     thumbnail: {
+      allowNull: false,
       type: Sequelize.STRING,
     },
     body: {
+      allowNull: false,
       type: Sequelize.ARRAY(Sequelize.STRING(1000)),
     },
     images: {
+      allowNull: false,
       type: Sequelize.ARRAY(Sequelize.STRING),
     },
     info: {
+      allowNull: false,
       type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.STRING)),
     },
     EmployeeId: {

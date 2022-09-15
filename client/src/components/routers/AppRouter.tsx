@@ -16,10 +16,10 @@ function AppRouter({
   publicRoutes,
   authedRoutes,
 }: AppRouterProps) {
-  const { user } = useContext(Context);
+  const { employee } = useContext(Context);
   return (
     <Routes>
-      {user.isRegistered && authedRoutes?.map(({ path, Component }) => (
+      {employee.isRegistered && authedRoutes?.map(({ path, Component }) => (
         <Route
           key={path}
           path={path}

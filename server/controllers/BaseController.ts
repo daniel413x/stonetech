@@ -52,12 +52,14 @@ export default abstract class BaseController<M extends Model> {
     const offset = page * limit - limit;
     const byNewest = req.query.byNewest as string;
     const order: any[] = [];
-    const params: { [key: string]: any } = {
+    const attributes = req.query.attributes as string[];
+    const params: Omit<FindAndCountOptions<Attributes<M>>, 'group'> = {
       where: {},
       ...options,
       limit,
       offset,
       order,
+      attributes,
     };
     if (byNewest) {
       params.order = [[col('createdAt'), 'DESC']];

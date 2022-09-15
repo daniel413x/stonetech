@@ -1,16 +1,15 @@
 /* eslint-disable no-undef */
-
 import { clientUrl, serverUrl } from '../../support/commands';
 
 /// <reference types="cypress" />
 
 describe('stonetech app', () => {
   beforeEach(() => {
-    // cy.request('POST', `${serverUrl}/api/testing/reset`);
+    cy.request('POST', `${serverUrl}/api/testing/reset`);
+    cy.visit(clientUrl);
   });
   describe('as a guest', () => {
     beforeEach(() => {
-      cy.visit(clientUrl);
       cy.get('.slider');
     });
     describe('using the slider', () => {
@@ -76,7 +75,7 @@ describe('stonetech app', () => {
           .should('not.have.css', 'end');
         // .should('contain.text', '1');
       });
-      it.only('blocks the user from scrolling through too fast and causing issues', () => {
+      it('blocks the user from scrolling through too fast', () => {
         cy.wait(2000);
         cy.get('@next')
           .click();
@@ -88,6 +87,48 @@ describe('stonetech app', () => {
           .click();
         cy.get('@counter')
           .should('contain.text', '2');
+      });
+    });
+    describe('on /projects', () => {
+      beforeEach(() => {
+        cy.visit(`${clientUrl}/projects`);
+      });
+      it('fetches and renders projects upon loading', () => {
+        cy.get('#projects-ul')
+          .find('img')
+          .should('have.length', 22);
+      });
+      it('fetches and renders more projects upon scrolling to the upper edge of the footer', () => {
+        cy.get('#projects-ul')
+          .find('img');
+        cy.scrollLoadProjectsBatchTwo();
+        cy.get('#projects-ul')
+          .find('img')
+          .should('have.length', 44);
+      });
+      it('fetches and renders up to the maximum number of projects as per pagination', () => {
+        cy.get('#projects-ul')
+          .find('img');
+        cy.scrollLoadProjectsBatchTwo();
+        cy.scrollLoadProjectsBatchThree();
+        cy.get('#projects-ul')
+          .find('img')
+          .should('have.length', 52);
+      });
+      describe('all projects are already fetched', () => {
+        beforeEach(() => {
+          cy.scrollLoadProjectsBatchTwo();
+          cy.scrollLoadProjectsBatchThree();
+        });
+        it.only('does not wipe fetched projects upon switching pages via NavLinks', () => {
+          cy.contains('Main')
+            .click({ force: true });
+          cy.contains('Projects')
+            .click({ force: true });
+          cy.get('#projects-ul')
+            .find('img')
+            .should('have.length', 52);
+        });
       });
     });
   });

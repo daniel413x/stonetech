@@ -1,4 +1,5 @@
 import FrontPage from '../pages/FrontPage';
+import Projects from '../pages/Projects';
 
 export const FRONT_PAGE_ROUTE = '/';
 export const INDEX_ROUTE = '/*';
@@ -21,7 +22,7 @@ export const EMPLOYEE = 'EMPLOYEE';
 export const indexPublicRoutes = [
   {
     path: PROJECTS_ROUTE,
-    Component: FrontPage,
+    Component: Projects,
   },
   {
     path: INDEX_ROUTE,

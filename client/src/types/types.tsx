@@ -16,7 +16,9 @@ export interface IEmployee {
 
 export interface IProject {
   id: string;
-  title: string;
+  fullTitle: string;
+  galleryTitle: string;
+  client: string;
   images: string[];
   thumbnail: string;
   info: [string, string][];
@@ -35,3 +37,11 @@ export interface INavButton {
   to: string;
   label: string;
 }
+
+export type ProjectInGallery = Omit<IProject, 'images' | 'info' | 'seniorArchitect' | 'body'>;
+
+export type QueryReqFetchProjects = {
+  page?: number;
+  limit?: number;
+  attributes?: ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
+};

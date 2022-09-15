@@ -21,34 +21,30 @@ for (let c = 0; c < delayedCommands.length; c += 1) {
 
 */
 
-Cypress.Commands.add('enterValidRegistrationForm', () => {
-  cy.get('#email-field')
-    .type('adbc1234@gmail.com', { force: true });
-  cy.get('#password-field')
-    .type('defg5678', { force: true });
+Cypress.Commands.add('scrollLoadProjectsBatchTwo', () => {
+  cy.scrollTo('0', '85%');
+  cy.wait(200);
+  cy.scrollTo('0', '87%');
+  cy.wait(200);
+  cy.scrollTo('0', '88%');
+  cy.wait(200);
+  cy.scrollTo('0', '89%');
+  cy.wait(200);
+  cy.scrollTo('0', '90%');
+  cy.wait(200);
 });
 
-Cypress.Commands.add('postCreateUser', () => {
-  const user = {
-    email: 'tester@genericapp.com',
-    password: 'testerpassword',
-    guestId: localStorage.getItem('guestId'),
-  };
-  cy.request('POST', `${serverUrl}/api/user/registration`, user)
-    .then(({ body }) => {
-      localStorage.setItem('registeredToken', JSON.stringify(body));
-    });
-});
-
-Cypress.Commands.add('postLogin', (email, password) => {
-  const user = {
-    email,
-    password,
-  };
-  cy.request('POST', `${serverUrl}/api/user/login`, user)
-    .then(({ body }) => {
-      localStorage.setItem('registeredToken', body.token);
-    });
+Cypress.Commands.add('scrollLoadProjectsBatchThree', () => {
+  cy.scrollTo('0', '90%');
+  cy.wait(200);
+  cy.scrollTo('0', '91%');
+  cy.wait(200);
+  cy.scrollTo('0', '92%');
+  cy.wait(200);
+  cy.scrollTo('0', '93%');
+  cy.wait(200);
+  cy.scrollTo('0', '94%');
+  cy.wait(200);
 });
 
 export {};

@@ -6,12 +6,12 @@ import {
 import Context from './context/context';
 import AppRouter from './components/routers/AppRouter';
 import Navbar from './components/Navbar/Navbar';
-import { autoAuth } from './http/userAPI';
+import { autoAuth } from './http/employeeAPI';
 import Footer from './components/Footer/Footer';
 
 function App() {
   const {
-    user,
+    employee,
   } = useContext(Context);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
         const registeredToken = localStorage.getItem('registeredToken');
         if (registeredToken) {
           const stillAuthed = await autoAuth();
-          user.set(stillAuthed);
+          employee.set(stillAuthed);
         }
       } catch (error: any) {
         if (error.response.status === 401) {
