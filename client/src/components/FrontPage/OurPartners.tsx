@@ -63,7 +63,7 @@ function OurPartners() {
       <List
         items={partners}
         renderAs={({ name, Logo, info }) => (
-          <li>
+          <li key={name}>
             <Partner
               name={name}
               Logo={Logo}

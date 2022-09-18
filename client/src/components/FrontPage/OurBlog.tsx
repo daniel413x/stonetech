@@ -78,7 +78,7 @@ function OurBlog() {
       </h2>
       <List
         LastItem={(
-          <li><MoreBlogsLink /></li>
+          <li key="more-blogs-link"><MoreBlogsLink /></li>
         )}
         items={blogEntries}
         renderAs={({
@@ -88,7 +88,7 @@ function OurBlog() {
           url,
           image,
         }) => (
-          <li>
+          <li key={title}>
             <Blog
               date={date}
               title={title}

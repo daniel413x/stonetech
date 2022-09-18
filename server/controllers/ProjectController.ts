@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import Employee from '../db/models/Employee';
 import Project from '../db/models/Project';
 // import ApiError from '../error/ApiError';
 import BaseController from './BaseController';
@@ -10,6 +11,16 @@ class ProjectController extends BaseController<Project> {
 
   get(req: Request, res: Response) {
     this.execFindAndCountAll(req, res);
+  }
+
+  getByTitle(req: Request, res: Response, next: NextFunction) {
+    const options = {
+      include: [{
+        model: Employee,
+        as: 'employee',
+      }],
+    };
+    return this.execFindOneByParams(req, res, next, options);
   }
 
   create(req: Request, res: Response) {

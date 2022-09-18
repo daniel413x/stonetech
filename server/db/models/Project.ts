@@ -27,7 +27,7 @@ class Project extends BaseModel<Project> implements IProject {
   location!: string;
 
   static associate(models: any) {
-    Project.belongsTo(models.Employee, { targetKey: 'id', foreignKey: 'EmployeeId' });
+    Project.belongsTo(models.Employee, { targetKey: 'id', foreignKey: 'EmployeeId', as: 'employee' });
   }
 }
 

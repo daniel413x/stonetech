@@ -12,12 +12,14 @@ function Footer() {
       <div className="wrapper">
         <div className="first-col">
           <img className="logo" src={logo} alt="Stonetech logo" />
-          <h2>
-            About us
-          </h2>
-          <p className="paragraph">
-            We discuss and brainstorm our clients’ ideas and then apply our skill and experience to bring them to life.
-          </p>
+          <div className="text-col">
+            <h2>
+              About us
+            </h2>
+            <p className="paragraph">
+              We discuss and brainstorm our clients’ ideas and then apply our skill and experience to bring them to life.
+            </p>
+          </div>
         </div>
         <div className="second-col">
           <h2>

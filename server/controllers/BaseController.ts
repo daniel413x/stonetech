@@ -7,6 +7,8 @@ import {
   Attributes,
   FindOptions,
   DestroyOptions,
+  FindAttributeOptions,
+  Op,
 } from 'sequelize';
 import ApiError from '../error/ApiError';
 import { assignBodyAndProcessImages } from '../utils/functions';
@@ -18,30 +20,23 @@ export default abstract class BaseController<M extends Model> {
     this.model = model;
   }
 
-  async execGetOne(req: Request, res: Response, options?: FindOptions<Attributes<M>>) {
-    const params: { [key: string]: any } = {
-      ...options,
-    };
-    const data = await this.model.findOne(params);
-    return res.json(data);
-  }
-
-  async execGetOneByParamsId(req: Request, res: Response, next: NextFunction, options?: FindOptions<Attributes<M>>) {
-    const params: { [key: string]: any } = {
-      ...options,
-    };
-    const { id } = req.params;
-    if (!id) {
-      return next(ApiError.internal('Erroneous id'));
+  async execFindOneByParams(req: Request, res: Response, next: NextFunction, options?: FindOptions<Attributes<M>>) {
+    const fetchedParamKey = Object.keys(req.params)[0]; // the router :param must match the attribute key in the db column
+    const fetchedParamVal = req.params[fetchedParamKey];
+    if (!fetchedParamVal) {
+      return next(ApiError.internal('Erroneous'));
     }
-    const data = await this.model.findByPk(id, params);
-    return res.json(data);
-  }
-
-  async execFindOne(req: Request, res: Response, options?: FindOptions<Attributes<M>>) {
-    const params: { [key: string]: any } = {
+    const fetchedParamValRegex = fetchedParamVal.split('-').join('( |-)');
+    const params: FindOptions<Attributes<M>> = {
       ...options,
     };
+    params.where = {
+      ...params.where,
+      [fetchedParamKey]: { [Op.iRegexp]: fetchedParamValRegex },
+    };
+    if (req.query.attributes) {
+      params.attributes = req.query.attributes as FindAttributeOptions;
+    }
     const data = await this.model.findOne(params);
     return res.json(data);
   }

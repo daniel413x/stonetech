@@ -9,6 +9,10 @@ router.get(
   '/',
   (req, res) => ProjectController.get(req, res),
 );
+router.get(
+  '/:fullTitle',
+  (req, res, next) => ProjectController.getByTitle(req, res, next),
+);
 router.post(
   '/',
   checkRoleMiddleware(EMPLOYEE),

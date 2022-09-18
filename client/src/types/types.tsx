@@ -19,10 +19,11 @@ export interface IProject {
   fullTitle: string;
   galleryTitle: string;
   client: string;
+  location: string;
   images: string[];
   thumbnail: string;
   info: [string, string][];
-  seniorArchitect?: IEmployee;
+  employee?: IEmployee;
   body?: string[];
 }
 
@@ -38,10 +39,14 @@ export interface INavButton {
   label: string;
 }
 
-export type ProjectInGallery = Omit<IProject, 'images' | 'info' | 'seniorArchitect' | 'body'>;
+export type ProjectInGallery = Omit<IProject, 'images' | 'info' | 'seniorArchitect' | 'body' | 'location'>;
 
 export type QueryReqFetchProjects = {
   page?: number;
   limit?: number;
+  attributes?: ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
+};
+
+export type QueryReqFetchProject = {
   attributes?: ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
 };
