@@ -32,7 +32,11 @@ export interface IBlogPost {
   thumbnail: string;
   title: string;
   body: string[];
+  date: string;
+  snippet?: string;
 }
+
+export type BlogCard = Omit<IBlogPost, 'id' | 'body'>;
 
 export interface INavButton {
   to: string;
@@ -41,12 +45,16 @@ export interface INavButton {
 
 export type ProjectInGallery = Omit<IProject, 'images' | 'info' | 'seniorArchitect' | 'body' | 'location'>;
 
-export type QueryReqFetchProjects = {
-  page?: number;
-  limit?: number;
-  attributes?: ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
+export type ProjectAttributes = ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
+
+export type BlogAttributes = ('title' | ['createdAt', string] | 'thumbnail' | 'id' | 'body' | 'snippet')[];
+
+export type QueryReqFetchOne<T> = {
+  attributes?: T;
 };
 
-export type QueryReqFetchProject = {
-  attributes?: ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
+export type QueryReqFetchMultiple<T> = {
+  page?: number;
+  limit?: number;
+  attributes?: T;
 };

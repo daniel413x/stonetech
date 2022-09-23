@@ -19,7 +19,7 @@ function Partner({
   return (
     <div className="partner">
       <Logo className="logo" />
-      <p className="paragraph">
+      <p>
         <span className="name">
           {name}
         </span>

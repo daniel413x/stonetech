@@ -27,7 +27,7 @@ function Advantage({
         </span>
       </div>
       <div className="divider" />
-      <p className="paragraph">
+      <p>
         {body}
       </p>
       <NavLink className="read-more" to={url}>
@@ -71,7 +71,7 @@ function AboutUs() {
             We design and create ecological comfort
           </span>
           <Dots />
-          <p className="paragraph">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas diam. Blandit turpis cursus in hac habitasse platea dictumst quisque. Aliquam
           </p>
         </div>

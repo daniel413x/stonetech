@@ -22,7 +22,7 @@ const useWindowScrollLimit: (pageLimitReached?: boolean) => boolean = (pageLimit
     window.addEventListener('scroll', update);
     update();
     return () => window.removeEventListener('scroll', update);
-  }, [document.documentElement.scrollHeight, window.innerHeight, window.pageYOffset, footerHeight]);
+  }, [document.documentElement.scrollHeight, window.innerHeight, window.pageYOffset, footerHeight, pageLimitReached]);
   return reachedLimit;
 };
 

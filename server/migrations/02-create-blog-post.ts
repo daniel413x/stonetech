@@ -11,6 +11,10 @@ export default {
     body: {
       type: Sequelize.ARRAY(Sequelize.STRING(1000)),
     },
+    snippet: {
+      type: Sequelize.STRING(120),
+      allowNull: false,
+    },
     id: {
       type: Sequelize.UUID,
       defaultValue: UUIDV4,

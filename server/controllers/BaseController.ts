@@ -20,7 +20,7 @@ export default abstract class BaseController<M extends Model> {
     this.model = model;
   }
 
-  async execFindOneByParams(req: Request, res: Response, next: NextFunction, options?: FindOptions<Attributes<M>>) {
+  async execFindOneByParams(req: Request, res: Response, next?: NextFunction, options?: FindOptions<Attributes<M>>) {
     const fetchedParamKey = Object.keys(req.params)[0]; // the router :param must match the attribute key in the db column
     const fetchedParamVal = req.params[fetchedParamKey];
     if (!fetchedParamVal) {
@@ -47,7 +47,12 @@ export default abstract class BaseController<M extends Model> {
     const offset = page * limit - limit;
     const byNewest = req.query.byNewest as string;
     const order: any[] = [];
-    const attributes = req.query.attributes as string[];
+    const attributes = req.query.attributes as (string | [string, string])[];
+    for (let a = 0; a < attributes.length; a += 1) {
+      if (/^\[/.test(attributes[a] as string)) {
+        attributes[a] = JSON.parse(attributes[a] as string);
+      }
+    }
     const params: Omit<FindAndCountOptions<Attributes<M>>, 'group'> = {
       where: {},
       ...options,

@@ -22,3 +22,29 @@ export function filterEmpties(arr: (ProjectInGallery | undefined)[]): boolean {
   }
   return true;
 }
+
+export function getMaxPage(itemsInDb: number, itemsPerPage: number) {
+  return Math.ceil(itemsInDb / itemsPerPage);
+}
+export function projectsLayoutOne(projects: ProjectInGallery[]): ProjectInGallery[][] {
+  const returnedArr = [];
+  for (let i = 0; i < projects.length; i += 3) {
+    returnedArr.push(projects.slice(i, i + 2));
+    returnedArr.push([projects[i + 2]]);
+  }
+  return returnedArr.filter(filterEmpties);
+}
+
+export function projectsLayoutTwo(projects: ProjectInGallery[]): ProjectInGallery[][] {
+  const returnedArr = [];
+  for (let i = 0; i < projects.length; i += 3) {
+    if (i % 2 === 0) {
+      returnedArr.push([projects[i]]);
+      returnedArr.push(projects.slice(i + 1, i + 3));
+    } else {
+      returnedArr.push(projects.slice(i + 1, i + 3));
+      returnedArr.push([projects[i]]);
+    }
+  }
+  return returnedArr.filter(filterEmpties);
+}

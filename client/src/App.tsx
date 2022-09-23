@@ -8,6 +8,7 @@ import AppRouter from './components/routers/AppRouter';
 import Navbar from './components/Navbar/Navbar';
 import { autoAuth } from './http/employeeAPI';
 import Footer from './components/Footer/Footer';
+import ScrollWrapper from './components/ScrollWrapper';
 
 function App() {
   const {
@@ -33,13 +34,15 @@ function App() {
   }, []);
   return loading ? null : (
     <Router>
-      <Navbar />
-      <div id="main-routes-content">
-        <AppRouter
-          publicRoutes={indexPublicRoutes}
-        />
-      </div>
-      <Footer />
+      <ScrollWrapper>
+        <Navbar />
+        <div id="main-routes-content">
+          <AppRouter
+            publicRoutes={indexPublicRoutes}
+          />
+        </div>
+        <Footer />
+      </ScrollWrapper>
     </Router>
   );
 }

@@ -12,6 +12,10 @@ class BlogPostController extends BaseController<BlogPost> {
     this.execFindAndCountAll(req, res);
   }
 
+  getByTitle(req: Request, res: Response) {
+    this.execFindOneByParams(req, res);
+  }
+
   create(req: Request, res: Response) {
     this.execCreate(req, res);
   }

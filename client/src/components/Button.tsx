@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 interface ButtonProps {
-  label: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
   className?: string;
   onClick: (...args: any[]) => void;
+  children?: ReactElement | ReactElement[] | string;
 }
 
 function Button({
-  label,
   type,
   className,
   onClick,
+  children,
 }: ButtonProps) {
   return (
     <button
@@ -20,7 +20,7 @@ function Button({
       type={type}
       onClick={onClick}
     >
-      {label}
+      {children}
     </button>
   );
 }
@@ -28,6 +28,7 @@ function Button({
 Button.defaultProps = {
   type: 'button',
   className: '',
+  children: false,
 };
 
 export default Button;

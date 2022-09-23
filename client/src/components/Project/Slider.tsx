@@ -1,13 +1,8 @@
-/* eslint-disable */
-
 import React, { useState, useRef, useEffect } from 'react';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Slider from 'react-slick';
 import useKeyPress from '../../hooks/useKeyPress';
 import { ReactComponent as TriangleRight } from '../../assets/triangle-right.svg';
 import useTrackDimensions from '../../hooks/useTrackDimensions';
-import List from '../List';
 import useInterval from '../../hooks/useInterval';
 
 interface ProjectSliderProps {
@@ -49,7 +44,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
     if (blockActions) {
       return;
     }
-    setSelected(index)
+    setSelected(index);
     sliderRef.current!.slickGoTo(index);
   };
   const tempBlock = () => {
@@ -66,7 +61,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
       sumThumbnailsWidth += thumbnails[i].offsetWidth;
     }
     if (sumThumbnailsWidth > thumbnailsWidth!) {
-    thumbnailsRef.current!.scrollLeft = sumThumbnailsWidth - 284;
+      thumbnailsRef.current!.scrollLeft = sumThumbnailsWidth - 284;
     }
     setSelected(selected + 1);
     sliderRef.current!.slickNext();
@@ -80,7 +75,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
       sumThumbnailsWidth += thumbnails[i].offsetWidth;
     }
     if (sumThumbnailsWidth < thumbnailsRef.current!.scrollWidth - thumbnailsRef.current!.scrollLeft) {
-    thumbnailsRef.current!.scrollLeft = sumThumbnailsWidth;
+      thumbnailsRef.current!.scrollLeft = sumThumbnailsWidth;
     }
     setSelected(selected - 1);
     sliderRef.current!.slickPrev();
@@ -119,6 +114,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
       >
         {images.map((image, i) => (
           <img
+            // eslint-disable-next-line react/no-array-index-key
             key={`${image}${i}`}
             src={`${process.env.REACT_APP_API_URL}${image}`}
             className="cover-image"
@@ -129,31 +125,39 @@ function ProjectSlider({ images }: ProjectSliderProps) {
       <div className="thumbnails-wrapper">
         <ul className="thumbnails" ref={thumbnailsRef}>
           {images.map((image, i) => (
+            // eslint-disable-next-line react/no-array-index-key
             <li key={`${image}${i}`}>
-          <button onClick={() => selectSlide(i!)} key={`${image}${i! + 1}`}>
-            <img
-              src={`${process.env.REACT_APP_API_URL}${image}`}
-              alt=""
-              className={`thumbnail ${i === selected ? 'selected' : undefined}`}
-            />
-          </button>
-          </li>
+              <button onClick={() => selectSlide(i!)} key={`${image}${i! + 1}`} type="button">
+                <img
+                  src={`${process.env.REACT_APP_API_URL}${image}`}
+                  alt=""
+                  className={`thumbnail ${i === selected ? 'selected' : undefined}`}
+                />
+              </button>
+            </li>
           ))}
         </ul>
-        <button className={`scroll-button left ${showScrollButtons && 'shown'}`} onMouseDown={() => setIsScrollingLeft(true)}
-        onMouseUp={() => setIsScrollingLeft(false)}>
-          <TriangleRight
-            className="icon"
-          />
-        </button>
-        <button className={`scroll-button right ${showScrollButtons && 'shown'}`} onMouseDown={() => setIsScrollingRight(true)}
-        onMouseUp={() => setIsScrollingRight(false)}
+        <button
+          className={`scroll-button left ${showScrollButtons && 'shown'}`}
+          onMouseDown={() => setIsScrollingLeft(true)}
+          onMouseUp={() => setIsScrollingLeft(false)}
+          type="button"
         >
           <TriangleRight
             className="icon"
           />
         </button>
-        </div>
+        <button
+          className={`scroll-button right ${showScrollButtons && 'shown'}`}
+          onMouseDown={() => setIsScrollingRight(true)}
+          onMouseUp={() => setIsScrollingRight(false)}
+          type="button"
+        >
+          <TriangleRight
+            className="icon"
+          />
+        </button>
+      </div>
     </div>
   );
 }

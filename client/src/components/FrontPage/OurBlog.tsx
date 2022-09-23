@@ -1,51 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { blogDate } from '../../utils/functions';
-import blogImageOne from '../../assets/stairs-1.jpg';
-import blogImageTwo from '../../assets/stairs-2.jpg';
+import { observer } from 'mobx-react-lite';
 import moreBlogsBg from '../../assets/bg-generic-1.jpg';
 import List from '../List';
-
-interface BlogProps {
-  date: any;
-  title: string;
-  snippet: string;
-  image: string;
-  url: string;
-}
-
-function Blog({
-  date,
-  title,
-  snippet,
-  url,
-  image,
-}: BlogProps) {
-  return (
-    <div className="blog">
-      <img alt={title} src={image} />
-      <span className="date">
-        {date}
-      </span>
-      <span className="title">
-        {title}
-      </span>
-      <p className="paragraph">
-        {snippet}
-      </p>
-      <NavLink className="read-more" to={url}>
-        Read more
-      </NavLink>
-    </div>
-  );
-}
+import BlogCard from '../BlogCard';
+import Context from '../../context/context';
+import { fetchBlogs } from '../../http/blogAPI';
 
 function MoreBlogsLink() {
   return (
     <div className="more-blogs-link">
       <img
         src={moreBlogsBg}
-        alt=""
+        alt="See more blogs"
       />
       <NavLink className="centered-link" to="blog">
         All blog entries
@@ -55,22 +22,20 @@ function MoreBlogsLink() {
 }
 
 function OurBlog() {
-  const blogEntries = [
-    {
-      date: blogDate(new Date().toString()),
-      image: blogImageOne,
-      title: 'incredible work on these marble stairs',
-      snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu accumsan metus. At vero eos.',
-      url: '/',
-    },
-    {
-      date: blogDate(new Date().toString()),
-      image: blogImageTwo,
-      title: 'Our work on a futuristic corporate interior',
-      snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu accumsan metus. At vero eos.',
-      url: '/',
-    },
-  ];
+  const { blog } = useContext(Context);
+  useEffect(() => {
+    const useCached = blog.cachedFrontPageCards.length === 2;
+    if (useCached) {
+      return;
+    }
+    (async () => {
+      const fetchedBlogs = await fetchBlogs({
+        limit: 2,
+        attributes: ['title', 'snippet', 'thumbnail', ['createdAt', 'date']],
+      });
+      blog.cacheFrontPageCards(fetchedBlogs.rows);
+    })();
+  }, []);
   return (
     <div className="our-blog">
       <h2>
@@ -80,21 +45,19 @@ function OurBlog() {
         LastItem={(
           <li key="more-blogs-link"><MoreBlogsLink /></li>
         )}
-        items={blogEntries}
+        items={blog.cachedFrontPageCards}
         renderAs={({
           date,
           title,
           snippet,
-          url,
-          image,
+          thumbnail,
         }) => (
           <li key={title}>
-            <Blog
+            <BlogCard
               date={date}
               title={title}
               snippet={snippet}
-              url={url}
-              image={image}
+              thumbnail={thumbnail}
             />
           </li>
         )}
@@ -108,4 +71,4 @@ function OurBlog() {
   );
 }
 
-export default OurBlog;
+export default observer(OurBlog);

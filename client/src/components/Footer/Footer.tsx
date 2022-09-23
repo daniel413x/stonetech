@@ -16,7 +16,7 @@ function Footer() {
             <h2>
               About us
             </h2>
-            <p className="paragraph">
+            <p>
               We discuss and brainstorm our clients’ ideas and then apply our skill and experience to bring them to life.
             </p>
           </div>
@@ -40,7 +40,7 @@ function Footer() {
             Social media
           </h2>
           <div className="divider" />
-          <p className="paragraph">
+          <p>
             Subscribe to receive photography of all our awesome projects for clients all over the world.
           </p>
           <SocMediaIcons />

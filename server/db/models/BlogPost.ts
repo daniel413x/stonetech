@@ -12,6 +12,8 @@ class BlogPost extends BaseModel<BlogPost> implements IBlogPost {
 
   title!: string;
 
+  snippet!: string;
+
   body!: string[];
 }
 
@@ -29,6 +31,10 @@ BlogPost.init(
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    snippet: {
+      type: DataTypes.STRING(120),
       allowNull: false,
     },
     body: {

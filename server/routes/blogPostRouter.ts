@@ -9,6 +9,10 @@ router.get(
   '/',
   (req, res) => BlogPostController.get(req, res),
 );
+router.get(
+  '/:title',
+  (req, res) => BlogPostController.getByTitle(req, res),
+);
 router.post(
   '/',
   checkRoleMiddleware(EMPLOYEE),

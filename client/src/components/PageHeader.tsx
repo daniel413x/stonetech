@@ -11,7 +11,7 @@ function PageHeader({ header, paragraph = '' }: PageHeaderProps) {
       <h1>
         {header}
       </h1>
-      <p className="paragraph">
+      <p>
         {paragraph}
       </p>
     </div>

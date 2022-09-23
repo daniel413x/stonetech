@@ -76,7 +76,7 @@ function ProjectPage() {
               />
             ) : (
               // eslint-disable-next-line react/no-array-index-key
-              <p className="paragraph" key={`${string}${i}`}>
+              <p key={`${string}${i}`}>
                 {string}
               </p>
             )))}
@@ -94,7 +94,7 @@ function ProjectPage() {
               <span className="name">
                 {employee?.name}
               </span>
-              <p className="paragraph bio">
+              <p className="bio">
                 {employee?.bio}
               </p>
             </div>

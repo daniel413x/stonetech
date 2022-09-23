@@ -24,7 +24,7 @@ const useRefScrollXLimit: (ref: RefObject<any>, pageLimitReached?: boolean) => b
     };
     ref.current?.addEventListener('scroll', update);
     return () => ref.current?.removeEventListener('scroll', update);
-  }, [ref.current]);
+  }, [ref.current, pageLimitReached]);
   return reachedLimit;
 };
 

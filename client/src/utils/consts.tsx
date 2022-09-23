@@ -1,6 +1,15 @@
 import FrontPage from '../pages/FrontPage';
 import Projects from '../pages/Projects';
 import ProjectPage from '../pages/ProjectPage';
+import Blog from '../pages/Blog';
+import Services from '../pages/Services';
+import BlogPage from '../pages/BlogPage';
+import InteriorDesign from '../pages/services/InteriorDesign';
+import Conceptualization from '../pages/services/Conceptualization';
+import Engineering from '../pages/services/Engineering';
+import Delivery from '../pages/services/Delivery';
+import Repairs from '../pages/services/Repairs';
+import Consultation from '../pages/services/Consultation';
 
 export const FRONT_PAGE_ROUTE = '/';
 export const INDEX_ROUTE = '/*';
@@ -21,6 +30,42 @@ export const ADMIN = 'ADMIN';
 export const EMPLOYEE = 'EMPLOYEE';
 
 export const indexPublicRoutes = [
+  {
+    path: `${BLOG_ROUTE}/:title`,
+    Component: BlogPage,
+  },
+  {
+    path: BLOG_ROUTE,
+    Component: Blog,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${CONSULTATION_ROUTE}`,
+    Component: Consultation,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${REPAIRS_ROUTE}`,
+    Component: Repairs,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${DELIVERY_ROUTE}`,
+    Component: Delivery,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${ENGINEERING_ROUTE}`,
+    Component: Engineering,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${CONCEPTUALIZATION_ROUTE}`,
+    Component: Conceptualization,
+  },
+  {
+    path: `${SERVICES_ROUTE}/${INTERIOR_DESIGN_ROUTE}`,
+    Component: InteriorDesign,
+  },
+  {
+    path: SERVICES_ROUTE,
+    Component: Services,
+  },
   {
     path: `${PROJECTS_ROUTE}/:title`,
     Component: ProjectPage,

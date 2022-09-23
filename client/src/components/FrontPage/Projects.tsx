@@ -104,7 +104,7 @@ function Projects() {
       <div className="upper-row">
         <div className="divider" />
         <div className="left-col">
-          <p className="paragraph">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas diam. Blandit turpis cursus in hac habitasse platea dictumst quisque.
           </p>
         </div>
@@ -134,10 +134,11 @@ function Projects() {
         />
         {projects.length === 3 ? (
           <Button
-            label="Show more"
             className="show-more-button"
             onClick={loadMore}
-          />
+          >
+            Show more
+          </Button>
         ) : (
           <AnchorButton
             label="Projects page"

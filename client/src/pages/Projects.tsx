@@ -13,16 +13,23 @@ import Project from '../components/Projects/Project';
 import { fetchProjects } from '../http/projectAPI';
 import Context from '../context/context';
 import useRefScrollXLimit from '../hooks/useRefScrollXLimit';
+import { projectsLayoutOne, projectsLayoutTwo } from '../utils/functions';
+import usePagination from '../hooks/usePagination';
 
 function Projects() {
   const { projects } = useContext(Context);
-  const { page, pageLimitReached } = projects;
+  const [projectsToArrange, setProjectsToArrange] = useState<ProjectInGallery[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { md, xl } = useBreakpoints();
   const ulRef = useRef<HTMLUListElement>(null);
+  const itemsPerFetch = 22;
+  const {
+    page,
+    pageLimitReached,
+    changePage,
+  } = usePagination({ itemsPerPage: itemsPerFetch, itemsInDb: projects.itemsInDb });
   const reachedXLimit = useRefScrollXLimit(ulRef, pageLimitReached);
   const reachedYLimit = useWindowScrollLimit(pageLimitReached);
-  const itemsPerFetch = 22;
   const getAnimDelay = (index: number) => {
     if (index >= itemsPerFetch) {
       return (index - itemsPerFetch) * 125;
@@ -30,7 +37,8 @@ function Projects() {
     return index * 125;
   };
   useEffect(() => {
-    if (projects.all.length) {
+    if (projects.cachedProjects[page]) {
+      setProjectsToArrange(projects.cachedProjects[page]);
       setLoading(false);
       return;
     }
@@ -39,33 +47,39 @@ function Projects() {
         attributes: ['thumbnail', 'galleryTitle', 'client', 'fullTitle', 'id'],
         page,
       });
-      projects.setPageLimit(Math.ceil(totalProjects / itemsPerFetch));
-      projects.setProjects(fetchedProjects);
+      projects.cacheProjects(fetchedProjects, page);
+      projects.setItemsInDb(totalProjects);
       setLoading(false);
+      setProjectsToArrange(fetchedProjects);
     })();
   }, []);
   useEffect(() => {
     if (loading) {
       return;
     }
-    const fetchMore = async () => {
-      const nextPage = page + 1;
-      const { rows: fetchedProjects } = await fetchProjects({
-        attributes: ['thumbnail', 'galleryTitle', 'client', 'fullTitle', 'id'],
-        page: nextPage,
-      });
-      projects.setProjects(projects.all.concat(fetchedProjects));
-      projects.setPage(nextPage);
-    };
     if ((reachedXLimit && !md) || (reachedYLimit && md)) {
-      (async () => fetchMore())();
+      changePage(page + 1);
     }
   }, [md, reachedYLimit, reachedXLimit]);
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    const fetchMore = async () => {
+      const { rows: fetchedProjects } = await fetchProjects({
+        attributes: ['thumbnail', 'galleryTitle', 'client', 'fullTitle', 'id'],
+        page,
+      });
+      setProjectsToArrange(projectsToArrange.concat(fetchedProjects));
+      projects.cacheProjects(fetchedProjects, page);
+    };
+    (async () => fetchMore())();
+  }, [page]);
   let arrangedProjects: ProjectInGallery[][] = [];
   if (md && !xl) {
-    arrangedProjects = projects.layoutTwo;
+    arrangedProjects = projectsLayoutTwo(projectsToArrange);
   } else {
-    arrangedProjects = projects.layoutOne;
+    arrangedProjects = projectsLayoutOne(projectsToArrange);
   }
   return (
     <div id="projects">
