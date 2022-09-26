@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import logoWhite from '../../assets/logo-white.png';
-import logoBlack from '../../assets/logo-black.png';
-import { mainNavButtons } from '../../utils/consts';
+import logoWhite from '../../assets/logos/logo-white.png';
+import logoBlack from '../../assets/logos/logo-black.png';
+import { mainNavButtons } from '../../utils/arrays';
 import NavButtons from '../NavButtons';
 import SocMediaIcons from '../SocMediaIcons';
 

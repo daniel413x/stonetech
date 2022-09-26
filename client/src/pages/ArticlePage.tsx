@@ -5,7 +5,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
 import { fetchBlog } from '../http/blogAPI';
 import { ICommonArticleProps } from '../types/types';
-import articles from '../utils/articles';
+import articles from '../assets/articles';
 import BreadcrumbTrail from '../components/BreadcrumbTrail';
 
 function ArticlePage() {

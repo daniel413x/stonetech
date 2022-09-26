@@ -6,8 +6,10 @@ import {
   ADVANTAGES_ROUTE,
   FEEDBACK_ROUTE,
   PARTNERS_ROUTE,
-  companyRoutes,
 } from '../utils/consts';
+import {
+  companyRoutes,
+} from '../utils/arrays';
 
 function Company() {
   const { pathname } = useLocation();

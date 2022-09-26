@@ -1,21 +1,16 @@
 import React from 'react';
-import { ReactComponent as CeramicaBardelli } from '../../assets/CeramicaBardelli.svg';
-import { ReactComponent as CeramicheCaesar } from '../../assets/CeramicheCaesar.svg';
-import { ReactComponent as Mutina } from '../../assets/Mutina.svg';
-import { ReactComponent as MosaicoMicro } from '../../assets/MosaicoMicro.svg';
+import { ReactComponent as CeramicaBardelli } from '../../assets/logos/CeramicaBardelli.svg';
+import { ReactComponent as CeramicheCaesar } from '../../assets/logos/CeramicheCaesar.svg';
+import { ReactComponent as Mutina } from '../../assets/logos/Mutina.svg';
+import { ReactComponent as MosaicoMicro } from '../../assets/logos/MosaicoMicro.svg';
 import List from '../List';
-
-interface PartnerProps {
-  Logo: any;
-  name: string;
-  info: string;
-}
+import { IPartner } from '../../types/types';
 
 function Partner({
   Logo,
   name,
   info,
-}: PartnerProps) {
+}: IPartner) {
   return (
     <div className="partner">
       <Logo className="logo" />

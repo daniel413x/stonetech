@@ -1,5 +1,5 @@
 import React from 'react';
-import sideImage from '../../assets/interior-29.jpg';
+import sideImage from '../../assets/images/interior-29.jpg';
 import Dots from '../Dots';
 import AdvantageCard from '../AdvantageCard';
 import { advantagesCards } from '../../utils/arrays';

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/logo-gray.png';
+import logo from '../../assets/logos/logo-gray.png';
 import NavButtons from '../NavButtons';
 import SocMediaIcons from '../SocMediaIcons';
-import { mainNavButtons, servicesNavButtons } from '../../utils/consts';
-import { ReactComponent as AngleUp } from '../../assets/angleup.svg';
+import { mainNavButtons, servicesNavButtons } from '../../utils/arrays';
+import { ReactComponent as AngleUp } from '../../assets/icons/angleup.svg';
 
 function Footer() {
   return (

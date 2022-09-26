@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { faLocationPin } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
-import displayImageOne from '../../assets/interior-8.jpg';
-import displayImageTwo from '../../assets/interior-5.1.jpg';
-import displayImageThree from '../../assets/interior-2.jpg';
-import displayImageFour from '../../assets/interior-13.jpg';
-import displayImageFive from '../../assets/interior-27.jpg';
-import displayImageSix from '../../assets/interior-4.jpg';
 import Dots from '../Dots';
 import List from '../List';
 import Button from '../Button';
 import AnchorButton from '../AnchorButton';
 import { PROJECTS_ROUTE } from '../../utils/consts';
+import LocationIcon from '../LocationIcon';
+import { projectsCardsBatchOne, projectsCardsBatchTwo } from '../../utils/arrays';
 
 interface ProjectForDisplayProps {
   location: string;
@@ -35,12 +29,7 @@ function ProjectForDisplay({
         <div className="angle-deco lower-right" />
       </div>
       <div className="info">
-        <div className="location-row">
-          <FontAwesomeIcon className="location-icon" icon={faLocationPin} />
-          <span className="location-text">
-            {location}
-          </span>
-        </div>
+        <LocationIcon location={location} />
         <div className="title-row">
           <Dots />
           <NavLink
@@ -59,45 +48,11 @@ function ProjectForDisplay({
 
 function Projects() {
   const [projects, setProjects] = useState<ProjectForDisplayProps[]>([]);
-  const firstBatch = [
-    {
-      location: 'Vienna, Virginia',
-      title: 'Cobblestone kitchen with ceramic tile panels',
-      image: displayImageOne,
-    },
-    {
-      location: 'Bethesda, Maryland',
-      title: 'Chillout zone for rest and relaxation',
-      image: displayImageTwo,
-    },
-    {
-      location: 'Washington, D.C.',
-      title: 'Marble bathroom du style classique',
-      image: displayImageThree,
-    },
-  ];
-  const secondBatch = [
-    {
-      location: 'Arlington, Virginia',
-      title: 'Our cobblestone pillars adorn a rustic restaurant',
-      image: displayImageFour,
-    },
-    {
-      location: 'Alexandria, Virginia',
-      title: 'Lorem ipsum dolor sit amet, consectetur...',
-      image: displayImageFive,
-    },
-    {
-      location: 'Silver Springs, Maryland',
-      title: 'Lorem ipsum dolor sit amet, consectetur...',
-      image: displayImageSix,
-    },
-  ];
   const loadMore = () => {
-    setProjects(projects.concat(secondBatch));
+    setProjects(projects.concat(projectsCardsBatchTwo));
   };
   useEffect(() => {
-    setProjects(firstBatch);
+    setProjects(projectsCardsBatchOne);
   }, []);
   return (
     <div className="projects">

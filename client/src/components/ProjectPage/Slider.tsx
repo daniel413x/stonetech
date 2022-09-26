@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import useKeyPress from '../../hooks/useKeyPress';
-import { ReactComponent as TriangleRight } from '../../assets/triangle-right.svg';
+import { ReactComponent as TriangleRight } from '../../assets/icons/triangle-right.svg';
 import useTrackDimensions from '../../hooks/useTrackDimensions';
 import useInterval from '../../hooks/useInterval';
 

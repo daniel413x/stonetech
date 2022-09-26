@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import moreBlogsBg from '../../assets/bg-generic-1.jpg';
+import moreBlogsBg from '../../assets/images/bg-generic-1.jpg';
 import List from '../List';
 import BlogCard from '../BlogCard';
 import Context from '../../context/context';

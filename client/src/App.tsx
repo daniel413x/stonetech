@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {
   indexPublicRoutes,
-} from './utils/consts';
+} from './utils/arrays';
 import Context from './context/context';
 import AppRouter from './components/routers/AppRouter';
 import Navbar from './components/Navbar/Navbar';

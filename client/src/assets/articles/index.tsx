@@ -1,16 +1,16 @@
-import quality from '../assets/quality-1.jpg';
-import safe from '../assets/safe-1.jpg';
-import team from '../assets/services-6.jpg';
-import creative from '../assets/engineering-3.jpg';
-import recognition from '../assets/stairs-2.jpg';
-import delivery from '../assets/delivery-2.jpg';
-import repairsHeader from '../assets/repairs-1.jpg';
-import interiorDesignHeader from '../assets/interiordesign-1.jpg';
-import conceptualizationHeader from '../assets/conceptualization-1.jpg';
-import consultationHeader from '../assets/consultation-1.jpg';
-import engineeringHeader from '../assets/engineering-1.jpg';
-import deliveryHeader from '../assets/delivery-1.jpg';
-import { ICommonArticleProps } from '../types/types';
+import quality from '../images/quality-1.jpg';
+import safe from '../images/safe-1.jpg';
+import team from '../images/services-6.jpg';
+import creative from '../images/engineering-3.jpg';
+import recognition from '../images/stairs-2.jpg';
+import delivery from '../images/delivery-2.jpg';
+import repairsHeader from '../images/repairs-1.jpg';
+import interiorDesignHeader from '../images/interiordesign-1.jpg';
+import conceptualizationHeader from '../images/conceptualization-1.jpg';
+import consultationHeader from '../images/consultation-1.jpg';
+import engineeringHeader from '../images/engineering-1.jpg';
+import deliveryHeader from '../images/delivery-1.jpg';
+import { ICommonArticleProps } from '../../types/types';
 
 const articles: { [key: string]: ICommonArticleProps } = {
   safe: {

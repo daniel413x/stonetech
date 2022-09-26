@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
-import servicesOne from '../assets/services-1.jpg';
-import servicesTwo from '../assets/services-2.jpg';
-import servicesThree from '../assets/services-3.jpg';
-import servicesFour from '../assets/services-4.jpg';
-import servicesFive from '../assets/services-5.jpg';
-import servicesSix from '../assets/services-6.jpg';
+import servicesOne from '../assets/images/services-1.jpg';
+import servicesTwo from '../assets/images/services-2.jpg';
+import servicesThree from '../assets/images/services-3.jpg';
+import servicesFour from '../assets/images/services-4.jpg';
+import servicesFive from '../assets/images/services-5.jpg';
+import servicesSix from '../assets/images/services-6.jpg';
 import List from '../components/List';
 import AnchorButton from '../components/AnchorButton';
 import {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader';
-import imageOne from '../../assets/process-2.jpg';
-import imageTwo from '../../assets/consultation-1.jpg';
+import imageOne from '../../assets/images/process-2.jpg';
+import imageTwo from '../../assets/images/consultation-1.jpg';
 
 function About() {
   return (

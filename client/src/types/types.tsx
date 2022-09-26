@@ -27,6 +27,12 @@ export interface IProject {
   body?: string[];
 }
 
+export interface IPartner {
+  Logo: any;
+  name: string;
+  info: string;
+}
+
 export interface ICommonArticleProps {
   thumbnail?: string;
   title: string;
