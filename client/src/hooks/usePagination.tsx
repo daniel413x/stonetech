@@ -42,7 +42,7 @@ const usePagination = ({
   useEffect(() => {
     setPageLimit(getMaxPage(itemsInDb, itemsPerPage));
   }, [itemsInDb, itemsPerPage]);
-  useEffect(() => {
+  useEffect(() => { // accounts for back/forward browser buttons
     if (page !== pageFromQuery) {
       setPage(pageFromQuery);
     }

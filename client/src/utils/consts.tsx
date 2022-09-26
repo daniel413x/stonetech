@@ -3,18 +3,20 @@ import Projects from '../pages/Projects';
 import ProjectPage from '../pages/ProjectPage';
 import Blog from '../pages/Blog';
 import Services from '../pages/Services';
-import BlogPage from '../pages/BlogPage';
-import InteriorDesign from '../pages/services/InteriorDesign';
-import Conceptualization from '../pages/services/Conceptualization';
-import Engineering from '../pages/services/Engineering';
-import Delivery from '../pages/services/Delivery';
-import Repairs from '../pages/services/Repairs';
-import Consultation from '../pages/services/Consultation';
+import ArticlePage from '../pages/ArticlePage';
+import Company from '../pages/Company';
+import About from '../pages/Company/About';
+import Advantages from '../pages/Company/Advantages';
 
 export const FRONT_PAGE_ROUTE = '/';
 export const INDEX_ROUTE = '/*';
 export const ADMIN_ROUTE = '/admin';
 export const COMPANY_ROUTE = 'company';
+export const COMPANY_WILDCARD_ROUTE = 'company/*';
+export const ABOUT_ROUTE = 'about';
+export const ADVANTAGES_ROUTE = 'advantages';
+export const PARTNERS_ROUTE = 'partners';
+export const FEEDBACK_ROUTE = 'feedback';
 export const CONTACT_ROUTE = 'contact';
 export const PROJECTS_ROUTE = 'projects';
 export const SERVICES_ROUTE = 'services';
@@ -23,6 +25,7 @@ export const INTERIOR_DESIGN_ROUTE = 'interiordesign';
 export const CONCEPTUALIZATION_ROUTE = 'conceptualization';
 export const ENGINEERING_ROUTE = 'engineering';
 export const DELIVERY_ROUTE = 'delivery';
+export const MATERIAL_DELIVERY_ROUTE = 'materialdelivery';
 export const REPAIRS_ROUTE = 'repairs';
 export const CONSULTATION_ROUTE = 'consultation';
 export const GUEST = 'GUEST';
@@ -31,36 +34,24 @@ export const EMPLOYEE = 'EMPLOYEE';
 
 export const indexPublicRoutes = [
   {
+    path: COMPANY_WILDCARD_ROUTE,
+    Component: Company,
+  },
+  {
+    path: COMPANY_ROUTE,
+    Component: Company,
+  },
+  {
     path: `${BLOG_ROUTE}/:title`,
-    Component: BlogPage,
+    Component: ArticlePage,
   },
   {
     path: BLOG_ROUTE,
     Component: Blog,
   },
   {
-    path: `${SERVICES_ROUTE}/${CONSULTATION_ROUTE}`,
-    Component: Consultation,
-  },
-  {
-    path: `${SERVICES_ROUTE}/${REPAIRS_ROUTE}`,
-    Component: Repairs,
-  },
-  {
-    path: `${SERVICES_ROUTE}/${DELIVERY_ROUTE}`,
-    Component: Delivery,
-  },
-  {
-    path: `${SERVICES_ROUTE}/${ENGINEERING_ROUTE}`,
-    Component: Engineering,
-  },
-  {
-    path: `${SERVICES_ROUTE}/${CONCEPTUALIZATION_ROUTE}`,
-    Component: Conceptualization,
-  },
-  {
-    path: `${SERVICES_ROUTE}/${INTERIOR_DESIGN_ROUTE}`,
-    Component: InteriorDesign,
+    path: `${SERVICES_ROUTE}/:title`,
+    Component: ArticlePage,
   },
   {
     path: SERVICES_ROUTE,
@@ -77,6 +68,33 @@ export const indexPublicRoutes = [
   {
     path: INDEX_ROUTE,
     Component: FrontPage,
+  },
+];
+
+export const companyRoutes = [
+  {
+    path: FEEDBACK_ROUTE,
+    Component: Advantages,
+  },
+  {
+    path: PARTNERS_ROUTE,
+    Component: Advantages,
+  },
+  {
+    path: `${ADVANTAGES_ROUTE}/:advantage`,
+    Component: ArticlePage,
+  },
+  {
+    path: ADVANTAGES_ROUTE,
+    Component: Advantages,
+  },
+  {
+    path: ABOUT_ROUTE,
+    Component: About,
+  },
+  {
+    path: INDEX_ROUTE,
+    Component: About,
   },
 ];
 

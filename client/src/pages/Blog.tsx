@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useEffect, useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useSearchParams } from 'react-router-dom';
@@ -26,7 +24,7 @@ function Blog() {
   } = usePagination({
     itemsPerPage,
     itemsInDb: blog.itemsInDb,
-    concurrentlySetQuery: true,  
+    concurrentlySetQuery: true,
   });
   useEffect(() => {
     (async () => {
@@ -42,9 +40,7 @@ function Blog() {
     })();
   }, []);
   useEffect(() => {
-    console.log(page);
     if (blog.cachedBlogPageCards[page]) {
-      console.log('blog.cachedBlogPageCards[page]');
       setCards(blog.cachedBlogPageCards[page]);
       return;
     }

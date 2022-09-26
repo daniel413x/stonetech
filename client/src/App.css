@@ -193,7 +193,6 @@ p {
   text-align: center;
   max-width: 440px;
   margin: 0 auto 3.125rem;
-  color: var(--primary-text);
 }
 
 .page-header h1 {
@@ -1021,7 +1020,7 @@ p {
   display: flex;
 }
 
-#front-page .about-us .right-col .lower-row .advantage {
+.advantage {
   display: flex;
   flex-direction: column;
   flex: 0 0 50%;
@@ -1035,19 +1034,19 @@ p {
   padding-left: 10px;
 }
 
-#front-page .about-us .right-col .lower-row .advantage .title-row {
+.advantage .title-row {
   display: flex;
   align-items: center;
 }
 
-#front-page .about-us .right-col .lower-row .advantage .title-row .icon {
+.advantage .title-row .icon {
   color: var(--primary-accent);
   width: 38px;
   height: 38px;
   fill: var(--primary-accent);
 }
 
-#front-page .about-us .right-col .lower-row .advantage .title-row .title-text {
+.advantage .title-row .title-text {
   color: var(--primary-text);
   font-size: 1.25rem;
   font-weight: 800;
@@ -1055,22 +1054,30 @@ p {
   margin-left: 1.25rem;
 }
 
+#company #advantages .advantage .divider.company-page {
+  display: none;
+}
+
 #front-page .about-us .right-col .lower-row .advantage:last-of-type .title-row .title-text {
   margin-left: 1.15rem;
 }
 
-#front-page .about-us .right-col .lower-row .advantage .divider {
+.advantage .divider {
   border: 1px solid var(--divider-gray-light);
   margin: 1rem 0;
 }
 
-#front-page .about-us .right-col .lower-row .advantage p {
+.advantage p {
   margin: 0 0 1rem;
 }
 
-#front-page .about-us .right-col .lower-row .advantage .read-more {
+.advantage .read-more {
   color: #000;
   font-weight: 800;
+}
+
+.advantage .read-more:hover {
+  color: var(--primary-accent);
 }
 
 #front-page .our-partners {
@@ -1370,10 +1377,15 @@ p {
   display: flex;
   text-decoration: underline;
   color: var(--primary-text-light);
+  text-transform: capitalize;
 }
 
 .breadcrumb-trail .current {
   font-weight: 800;
+}
+
+.breadcrumb-trail a:hover {
+  color: var(--primary-accent);
 }
 
 #project-page {
@@ -1739,12 +1751,12 @@ p {
   margin: 7rem 0 3.125rem;
 }
 
-#generic-article  {
+#article-page  {
   padding-left: var(--side-margins);
   padding-right: var(--side-margins);
 }
 
-#generic-article .wrapper {
+#article-page .wrapper {
   width: 100%;
   max-width: 1120px;
   display: flex;
@@ -1753,7 +1765,12 @@ p {
   margin: auto;
 }
 
-#generic-article .header-image {
+#article-page .breadcrumb-trail {
+  align-self: flex-start;
+  margin-bottom: 4.375rem;
+}
+
+#article-page .header-image {
   width: 100%;
   max-width: 910px;
   display: flex;
@@ -1765,17 +1782,17 @@ p {
   object-fit: cover;
 }
 
-#generic-article .body {
+#article-page .body {
   width: 100%;
   max-width: 740px;
   margin-bottom: 2.188rem;
 }
 
-#generic-article .body p {
+#article-page .body p {
   margin: 0 0 2.188rem;
 }
 
-#generic-article .body img {
+#article-page .body img {
   margin: 0 0 2.188rem;
   width: 100%;
 }
@@ -1854,6 +1871,129 @@ p {
   background-color: var(--primary-accent);
   color: var(--primary-white);
   pointer-events: none;
+}
+
+#company {
+  padding-left: var(--side-margins-non-widescreen);
+  padding-right: var(--side-margins-non-widescreen);
+  margin-top: 70px;
+  width: 100%;
+}
+
+#company .router-wrapper {
+  display: flex;
+  max-width: 1120px;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  grid-gap: 3.25rem;
+}
+
+#company .left-col {
+  display: flex;
+  flex: 0 0 265px;
+  flex-direction: column;
+  max-height: 315px;
+  max-width: 265px;
+  width: 100%;
+}
+
+#company .left-col h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: 2.75rem;
+  margin-left: 1.875rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  #company .left-col h2 {
+    margin-top: 0;
+  }
+}
+
+#company .left-col a {
+  text-decoration: none;
+  color: var(--primary-text);
+  font-size: 0.875rem;
+  padding: 0.75rem 0;
+  padding-left: 1.875rem;
+  border-bottom: 1px solid var(--divider-gray-light);
+}
+
+#company .left-col a:not(.current-route):hover {
+  color: var(--primary-accent);
+  text-decoration: underline;
+}
+
+#company .left-col a.current-route {
+  color: var(--primary-white);
+  background-color: var(--primary-accent);
+}
+
+#company .right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+#company .page-header {
+  color: var(--primary-text);
+  margin: 0;
+}
+
+#company .page-header h1 {
+  margin: 0 0 3rem;
+  text-transform: none;
+  font-size: 2rem;
+}
+
+#company #article-page {
+  padding: 0;
+}
+
+#company #advantages.right-col {
+  justify-self: center;
+}
+
+#company #advantages ul {
+  padding: 0;
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, 253px);
+  margin-bottom: 70px;
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+}
+
+#company #advantages .advantage {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+#company #advantages .advantage .title-row {
+  flex-direction: column;
+}
+
+#company #advantages .advantage .title-row .title-text {
+  margin: 1.15rem 0 1rem;
+  width: 100%;
+}
+
+#company #advantages .advantage .divider.front-page {
+  display: none;
+}
+
+#company #advantages .advantage .divider.company-page {
+  display: initial;
+  margin: 1.75rem auto 1rem;
+  opacity: 0.75;
+  width: 75%;
 }
 
 #footer {

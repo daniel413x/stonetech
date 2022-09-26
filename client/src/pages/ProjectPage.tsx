@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import BreadcrumbTrail from '../components/BreadcrumbTrail';
 import { fetchProject } from '../http/projectAPI';
 import { IProject } from '../types/types';
 import LocationIcon from '../components/LocationIcon';
-import Slider from '../components/Project/Slider';
+import Slider from '../components/ProjectPage/Slider';
 import List from '../components/List';
-import { FRONT_PAGE_ROUTE, PROJECTS_ROUTE } from '../utils/consts';
 
 function ProjectPage() {
   const [project, setProject] = useState<IProject>();
   const [loading, setLoading] = useState<boolean>(true);
+  const breadcrumbs = useLocation().pathname.split(/\//).filter(Boolean);
   const { title } = useParams();
   useEffect(() => {
     (async () => {
@@ -23,36 +23,19 @@ function ProjectPage() {
       setLoading(false);
     })();
   }, []);
-  let location;
-  let fullTitle;
-  let body;
-  let images;
-  let employee;
-  let info;
-  if (project) {
-    ({
-      location,
-      fullTitle,
-      body,
-      images,
-      employee,
-      info,
-    } = project);
+  if (!project || loading) {
+    return null;
   }
-  const breadcrumbs = [
-    {
-      label: 'Main',
-      to: FRONT_PAGE_ROUTE,
-    },
-    {
-      label: 'Projects',
-      to: `/${PROJECTS_ROUTE}`,
-    },
-    {
-      label: fullTitle as string,
-    },
-  ];
-  return loading ? null : (
+  const {
+    location,
+    fullTitle,
+    body,
+    images,
+    employee,
+    info,
+  } = project;
+  breadcrumbs[breadcrumbs.length - 1] = fullTitle;
+  return (
     <div id="project-page">
       <div className="wrapper">
         <div className="upper-row">

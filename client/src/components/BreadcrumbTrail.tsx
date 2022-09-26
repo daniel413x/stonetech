@@ -1,24 +1,31 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-type BreadCrumb = {
-  to?: string;
-  label: string;
-};
-
 interface BreadcrumbTrailProps {
-  arr: BreadCrumb[];
+  arr: string[];
 }
 
 function BreadcrumbTrail({ arr }: BreadcrumbTrailProps) {
   return (
     <div className="breadcrumb-trail">
-      {arr.map((breadcrumb, i) => {
+      <div className="breadcrumb" key="main">
+        <NavLink to="/" className="previous">
+          Main
+        </NavLink>
+        <span className="angle">
+          &gt;
+        </span>
+      </div>
+      {arr.map((str, i) => {
+        let navBack = '';
+        for (let n = 1; n < arr.length - i; n += 1) {
+          navBack += '../';
+        }
         if (i < arr.length - 1) {
           return (
-            <div className="breadcrumb" key={breadcrumb.label}>
-              <NavLink to={breadcrumb.to!} className="previous">
-                {breadcrumb.label}
+            <div className="breadcrumb" key={str}>
+              <NavLink to={`${navBack}${str!}`} className="previous">
+                {str}
               </NavLink>
               <span className="angle">
                 &gt;
@@ -27,9 +34,8 @@ function BreadcrumbTrail({ arr }: BreadcrumbTrailProps) {
           );
         }
         return (
-          // eslint-disable-next-line react/no-array-index-key
-          <span key={breadcrumb.label} className="breadcrumb current">
-            {breadcrumb.label}
+          <span key={str} className="breadcrumb current">
+            {str}
           </span>
         );
       })}

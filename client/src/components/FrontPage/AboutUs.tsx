@@ -1,41 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import sideImage from '../../assets/interior-29.jpg';
 import Dots from '../Dots';
-import { ReactComponent as Leaf } from '../../assets/leaf.svg';
-import { ReactComponent as Pickaxe } from '../../assets/pickaxe.svg';
-
-interface AdvantageProps {
-  Icon: any;
-  title: string;
-  body: string;
-  url: string;
-}
-
-function Advantage({
-  Icon,
-  title,
-  body,
-  url,
-}: AdvantageProps) {
-  return (
-    <div className="advantage">
-      <div className="title-row">
-        <Icon className="icon" />
-        <span className="title-text">
-          {title}
-        </span>
-      </div>
-      <div className="divider" />
-      <p>
-        {body}
-      </p>
-      <NavLink className="read-more" to={url}>
-        Read more
-      </NavLink>
-    </div>
-  );
-}
+import AdvantageCard from '../AdvantageCard';
+import { advantagesCards } from '../../utils/arrays';
 
 function AboutUs() {
   return (
@@ -76,16 +43,16 @@ function AboutUs() {
           </p>
         </div>
         <div className="lower-row">
-          <Advantage
-            Icon={Leaf}
-            title="Safe materials"
-            body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas diam. Blandit turpis cursus in hac habitasse platea dictumst quisque. Aliquam."
+          <AdvantageCard
+            Icon={advantagesCards[0].Icon}
+            title={advantagesCards[0].title}
+            body={advantagesCards[0].body}
             url="/"
           />
-          <Advantage
-            Icon={Pickaxe}
-            title="Quality stone"
-            body="Vestibulum sed arcu non odio. Interdum consectetur libero id faucibus nisl. Et odio pellentesque diam volutpat commodo sed egestas. At volutpat diam ut venenatis tellus in metus. Interdum varius sit amet mattis. Faucibus turpis in eu mi bibendum."
+          <AdvantageCard
+            Icon={advantagesCards[1].Icon}
+            title={advantagesCards[1].title}
+            body={advantagesCards[1].body}
             url="/"
           />
         </div>

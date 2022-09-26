@@ -27,13 +27,17 @@ export interface IProject {
   body?: string[];
 }
 
-export interface IBlogPost {
-  id: string;
-  thumbnail: string;
+export interface ICommonArticleProps {
+  thumbnail?: string;
   title: string;
   body: string[];
-  date: string;
   snippet?: string;
+}
+
+export interface IBlogPost extends Omit<ICommonArticleProps, 'thumbnail'> {
+  id: string;
+  thumbnail: string;
+  date: string;
 }
 
 export type BlogCard = Omit<IBlogPost, 'id' | 'body'>;

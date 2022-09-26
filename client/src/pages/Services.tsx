@@ -13,7 +13,7 @@ import {
   CONCEPTUALIZATION_ROUTE,
   CONSULTATION_ROUTE,
   CONTACT_ROUTE,
-  DELIVERY_ROUTE,
+  MATERIAL_DELIVERY_ROUTE,
   ENGINEERING_ROUTE,
   INTERIOR_DESIGN_ROUTE,
   REPAIRS_ROUTE,
@@ -74,7 +74,7 @@ function Services() {
       image: servicesFour,
       paragraph: 'Et odio pellentesque diam volutpat commodo sed egestas. Vestibulum sed arcu non odio. Interdum consectetur libero id faucibus nisl. At volutpat diam ut venenatis tellus in metus.',
       title: 'Material delivery',
-      to: DELIVERY_ROUTE,
+      to: MATERIAL_DELIVERY_ROUTE,
     },
     {
       image: servicesFive,
