@@ -10,6 +10,8 @@
   --primary-white: #FAFAFA;
   --primary-white-light-transparent: rgba(250, 250, 250, 0.5);
   --primary-gray-light-transparent: rgba(196, 196, 196, 0.3);
+  --warning-red-light: rgba(255, 0, 0, 0.5);
+  --success-green-light: #1dad00;
   --overlay-gray-transparent: rgba(249, 251, 255, 0.97);
   --divider-gray: #323232;
   --divider-gray-light: #E4E4E4;
@@ -88,6 +90,36 @@ p {
   font-size: 0.875rem;
 }
 
+.input, .textarea {
+  border: 1px solid var(--inactive-element);
+  border-radius: var(--styled-border-radius);
+  padding: 0.775rem 1rem;
+}
+
+.input.warn, .textarea.warn {
+  border: 1px solid var(--warning-red-light);
+}
+
+.input, .textarea, .input::placeholder, .textarea::placeholder {
+  color: var(--indigo-light);
+  font-weight: 300;
+  font-size: 0.938rem;
+  opacity: 0.85;
+}
+
+.textarea {
+  font-family: 'Raleway';
+  height: 126px;
+}
+
+.textarea::placeholder {
+  font-weight: 500;
+}
+
+.textarea:focus-visible, input:focus-visible {
+  outline: var(--primary-accent) auto 1px;
+}
+
 .hidden {
   visibility: hidden;
 }
@@ -100,10 +132,6 @@ p {
 .blocked-alt {
   pointer-events: none;
   opacity: 0.5;
-}
-
-#navbar .logo, #footer .logo {
-  height: 34px;
 }
 
 .dots {
@@ -304,6 +332,10 @@ p {
 #navbar .logo {
   position: relative;
   top: 10px;
+}
+
+#navbar .logo {
+  height: 34px;
 }
 
 #navbar .nav-buttons-ul {
@@ -1996,6 +2028,107 @@ p {
   width: 75%;
 }
 
+#company #partners {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 4.4rem;
+}
+
+#company #partners .partner {
+  width: 265px;
+  display: flex;
+  flex-direction: column;
+}
+
+#company #partners .partner .logo {
+  fill: var(--primary-white);
+  width: 200px;
+  height: 100px;
+  background-color: var(--primary-dark)
+}
+
+#company #partners ul {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1.5rem;
+  padding: 0;
+}
+
+#company #partners ul .partner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  grid-gap: 1.125rem;
+}
+
+@media (max-width: 767px) {  
+  #company #partners ul .partner {
+    flex-direction: column;
+    grid-gap: 1rem;
+    align-items: center;
+  }
+}
+
+#company #partners ul .partner .logo {
+  max-width: 160px;
+  width: 100%;
+  padding: 0.55rem;
+}
+
+#company #partners ul .partner .text-col {
+  width: 100%;
+}
+
+#company #partners ul .partner .text-col h2 {
+  margin-top: 0;
+  color: var(--primary-text);
+}
+
+#company #feedback h1 {
+  margin-bottom: 0;
+}
+
+#company #feedback p {
+  text-align: center;
+  margin: 2rem 0 3.5rem;
+}
+
+#company #feedback form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  max-width: 360px;
+  width: 100%;
+  margin-bottom: 4.375rem;
+}
+
+#company #feedback form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  max-width: 360px;
+  width: 100%;
+  margin-bottom: 4.375rem;
+}
+
+#company #feedback form.success .input, #company #feedback form.success .textarea {
+  background-color: var(--inactive-element);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#company #feedback form.success .button {
+  background-color: var(--success-green-light);
+  color: var(--primary-white);
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  grid-gap: 0.4rem;
+  transition: none;
+}
+
 #footer {
   background-color: var(--primary-dark);
   width: 100%;
@@ -2089,8 +2222,9 @@ p {
 
 #footer .first-col .logo {
   width: max-content;
-    margin-top: 0.4rem;
-    margin-bottom: 3rem;
+  margin-top: 0.4rem;
+  margin-bottom: 3rem;
+  height: 34px;
 }
 
 @media (max-width: 992px) {

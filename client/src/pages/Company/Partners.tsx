@@ -11,9 +11,8 @@ function Partner({
 }: IPartner) {
   return (
     <div className="partner">
-      <img
-        src={Logo}
-        alt={name}
+      <Logo
+        className="logo"
       />
       <div className="text-col">
         <h2>
@@ -36,11 +35,13 @@ function Partners() {
       <List
         items={partners}
         renderAs={({ Logo, name, info }) => (
-          <Partner
-            Logo={Logo}
-            name={name}
-            info={info}
-          />
+          <li key={name}>
+            <Partner
+              Logo={Logo}
+              name={name}
+              info={info}
+            />
+          </li>
         )}
       />
     </div>

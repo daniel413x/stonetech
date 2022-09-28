@@ -61,7 +61,7 @@ function ArticlePage() {
             if (/(\.jpe?g|\.png)$/.test(str)) {
               return (
                 <img
-                  src={isBlog ? `${process.env.REACT_APP_API_URL}${str}` : require(`../assets/${str}`)}
+                  src={isBlog ? `${process.env.REACT_APP_API_URL}${str}` : require(`../assets/images/${str}`)}
                   alt="Content"
                   key={str}
                 />

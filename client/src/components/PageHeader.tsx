@@ -5,21 +5,23 @@ interface PageHeaderProps {
   paragraph?: string;
 }
 
-function PageHeader({ header, paragraph = '' }: PageHeaderProps) {
+function PageHeader({ header, paragraph }: PageHeaderProps) {
   return (
     <div className="page-header">
       <h1>
         {header}
       </h1>
-      <p>
-        {paragraph}
-      </p>
+      {paragraph && (
+        <p>
+          {paragraph}
+        </p>
+      )}
     </div>
   );
 }
 
 PageHeader.defaultProps = {
-  paragraph: '',
+  paragraph: false,
 };
 
 export default PageHeader;
