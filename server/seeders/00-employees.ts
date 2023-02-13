@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import { ADMIN, EMPLOYEE } from '../utils/consts';
+import { ADMIN, davidKowalski, EMPLOYEE } from '../utils/consts';
 
 const hashPassword = async () => {
-  const returned = await bcrypt.hash('admintemppassword', 5);
+  const returned = await bcrypt.hash('password', 5);
   return returned;
 };
 
@@ -16,6 +16,17 @@ export default {
       avatar: 'admin.jpg',
       bio: '',
       id: admin,
+      roles: [EMPLOYEE, ADMIN],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      email: 'davidkowalski@stonetech.com',
+      password: await hashPassword(),
+      avatar: 'test-employee-davidkowalksi.jpg',
+      name: 'David Kowalski',
+      bio: 'Harvard University graduate, PhD candidate, professional architect. Over 120 projects’ worth of experience.',
+      id: davidKowalski,
       roles: [EMPLOYEE, ADMIN],
       createdAt: new Date(),
       updatedAt: new Date(),

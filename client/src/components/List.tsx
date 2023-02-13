@@ -20,7 +20,7 @@ function List<T>({
   return (
     <ul className={`${className}`} id={id}>
       {FirstItem}
-      {items.map(renderAs)}
+      {items?.map(renderAs)}
       {LastItem}
     </ul>
   );

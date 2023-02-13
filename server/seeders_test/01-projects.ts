@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { davidKowalski } from './00-employees';
+import { davidKowalski } from '../utils/consts';
 
 export const projectOne = '22c2bbd3-3660-41c8-9f2c-57ec7d780614';
 export const projectTwo = '29eb1b0b-4fa9-407c-a985-3822f2b033ab';

@@ -26,6 +26,7 @@ export function filterEmpties(arr: (ProjectInGallery | undefined)[]): boolean {
 export function getMaxPage(itemsInDb: number, itemsPerPage: number) {
   return Math.ceil(itemsInDb / itemsPerPage);
 }
+
 export function projectsLayoutOne(projects: ProjectInGallery[]): ProjectInGallery[][] {
   const returnedArr = [];
   for (let i = 0; i < projects.length; i += 3) {

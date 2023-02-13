@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "after-build": "rimraf ../server/client_dist && move ./build ../server/client_dist",
+    "build": "react-scripts build && npm run after-build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open"
@@ -58,6 +59,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0"
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "rimraf": "^3.0.2"
   }
 }
