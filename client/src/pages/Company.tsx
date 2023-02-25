@@ -1,15 +1,13 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import AppRouter from '../components/routers/AppRouter';
+import { companyRoutes } from '../paths/paths';
 import {
   ABOUT_ROUTE,
   ADVANTAGES_ROUTE,
   FEEDBACK_ROUTE,
   PARTNERS_ROUTE,
 } from '../utils/consts';
-import {
-  companyRoutes,
-} from '../utils/arrays';
 
 function Company() {
   const { pathname } = useLocation();

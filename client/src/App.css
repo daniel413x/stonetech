@@ -22,7 +22,6 @@
   --styled-border-radius: 0 5px 0 5px;
   --navbar-height: 115px;
   --footer-height: 477px;
-  /* filter:brightness(.5); */
 }
 
 @media (max-width: 1400px) {
@@ -132,6 +131,19 @@ p {
 .blocked-alt {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-dark);
+}
+
+.loading-screen.loaded .loading-logo {
+  transition: opacity 1s linear;
+  opacity: 0;
 }
 
 .dots {
