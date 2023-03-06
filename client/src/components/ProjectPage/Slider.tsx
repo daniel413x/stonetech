@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import useKeyPress from '../../hooks/useKeyPress';
 import { ReactComponent as TriangleRight } from '../../assets/icons/triangle-right.svg';
 import useTrackDimensions from '../../hooks/useTrackDimensions';
+import useActiveElement from '../../hooks/useActiveElement';
 import useInterval from '../../hooks/useInterval';
 
 interface ProjectSliderProps {
@@ -19,12 +20,28 @@ function ProjectSlider({ images }: ProjectSliderProps) {
   const [isScrollingRight, setIsScrollingRight] = useState<boolean>(false);
   const sliderRef = useRef<Slider>(null);
   const thumbnailsRef = useRef<HTMLUListElement>(null);
+  const leftArrowRef = useRef<HTMLButtonElement>(null);
+  const rightArrowRef = useRef<HTMLButtonElement>(null);
   const scrollLeft = () => {
     thumbnailsRef.current!.scrollLeft -= 1;
   };
   const scrollRight = () => {
     thumbnailsRef.current!.scrollLeft += 1;
   };
+  const enterPress = useKeyPress('Enter');
+  const activeElement = useActiveElement();
+  useEffect(() => {
+    if (enterPress && activeElement === leftArrowRef.current) {
+      setIsScrollingLeft(true);
+    } else {
+      setIsScrollingLeft(false);
+    }
+    if (enterPress && activeElement === rightArrowRef.current) {
+      setIsScrollingRight(true);
+    } else {
+      setIsScrollingRight(false);
+    }
+  }, [enterPress]);
   useInterval(() => scrollLeft(), isScrollingLeft, 5);
   useInterval(() => scrollRight(), isScrollingRight, 5);
   const { width: thumbnailsWidth } = useTrackDimensions(thumbnailsRef);
@@ -142,6 +159,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
           onMouseDown={() => setIsScrollingLeft(true)}
           onMouseUp={() => setIsScrollingLeft(false)}
           type="button"
+          ref={leftArrowRef}
         >
           <TriangleRight
             className="icon"
@@ -152,6 +170,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
           onMouseDown={() => setIsScrollingRight(true)}
           onMouseUp={() => setIsScrollingRight(false)}
           type="button"
+          ref={rightArrowRef}
         >
           <TriangleRight
             className="icon"

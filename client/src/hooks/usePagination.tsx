@@ -26,7 +26,10 @@ const usePagination = ({
   const [pageLimit, setPageLimit] = useState<number>(1);
   const [pageLimitReached, setPageLimitReached] = useState<boolean>(false);
   const changePage = (number: number) => {
-    const newPage = number > pageLimit || number < 1 ? 1 : number;
+    if (number > pageLimit || number < 1) {
+      return;
+    }
+    const newPage = number;
     setPage(newPage);
     if (concurrentlySetQuery) {
       setSearchParams({ page: number.toString() });

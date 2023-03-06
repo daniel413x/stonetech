@@ -76,6 +76,10 @@ button {
   cursor: pointer;
 }
 
+.button:focus {
+  outline: 3px solid var(--primary-dark-light);
+}
+
 .button:hover {
   filter: brightness(1.2);
 }
@@ -279,7 +283,7 @@ p {
   text-transform: uppercase;
 }
 
-.blog-card:hover .title {
+.blog-card:hover .title, .blog-card:focus .title {
   border-left: 3px solid var(--primary-accent);
 }
 
@@ -299,7 +303,7 @@ p {
   font-weight: 800;
 }
 
-.blog-card:hover .read-more {
+.blog-card:hover .read-more, .blog-card:focus .read-more {
   color: var(--primary-accent);
   text-decoration: underline;
 }
@@ -403,7 +407,6 @@ p {
   }
 }
 
-
 #front-page .slider {
   position: relative;
 }
@@ -431,6 +434,7 @@ p {
 
 #front-page .slider .image-wrapper {
   background: transparent;
+  outline: none;
 }
 
 #front-page .slider .slider-image-1 {
@@ -561,8 +565,16 @@ p {
   color: var(--primary-dark-light);
 }
 
+#front-page .slider .control-panel .buttons .arrow-left:focus {
+  outline: solid;
+}
+
 #front-page .slider .control-panel .buttons .arrow-right {
   color: var(--primary-dark-light);
+}
+
+#front-page .slider .control-panel .buttons .arrow-right:focus {
+  outline: solid;
 }
 
 #front-page .slider .bg {
@@ -1527,6 +1539,10 @@ p {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
+#project-page .slider .thumbnails-wrapper .scroll-button:focus {
+  outline: solid;
+}
+
 #project-page .slider .thumbnails-wrapper .scroll-button.left {
   left: 0;
   top: 0;
@@ -1749,6 +1765,10 @@ p {
   }
 }
 
+#services .service:focus {
+  outline: solid;
+}
+
 #services .service::before {
   width: 3px;
   height: 26px;
@@ -1758,7 +1778,7 @@ p {
   top: 50%;
 }
 
-#services .service:hover::before {
+#services .service:hover::before, #services .service:focus::before {
   background-color: var(--primary-accent);
 }
 
@@ -1766,7 +1786,7 @@ p {
   margin-top: 0;
 }
 
-#services .service:hover .text-col h2 {
+#services .service:hover .text-col h2, #services .service:focus .text-col h2 {
   color: var(--primary-accent);
   text-decoration: underline;
 }
@@ -1906,9 +1926,17 @@ p {
   margin: 0 0.5rem;
 }
 
+.page-control .number-buttons .number-button:focus {
+  outline: solid;
+}
+
 .page-control .arrow-button {
   height: 38px;
   width: max-content;
+}
+
+.page-control .arrow-button:focus {
+  outline: solid;
 }
 
 .page-control .current-page {
