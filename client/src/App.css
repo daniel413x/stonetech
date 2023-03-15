@@ -139,15 +139,11 @@ p {
 
 .loading-screen {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--primary-dark);
-}
-
-.loading-screen.loaded .loading-logo {
-  transition: opacity 1s linear;
-  opacity: 0;
 }
 
 .dots {
