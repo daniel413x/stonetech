@@ -1,66 +1,61 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { ChangeEvent } from 'react';
+import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
   input: string;
   setInput: (e: string) => void;
-  setPressedSubmit?: (boolean: boolean) => void;
-  pressedSubmit?: boolean;
   placeholder?: string;
   textarea?: boolean;
+  register?: UseFormRegister<FieldValues>,
+  name?: string,
+  registerOptions?: RegisterOptions<FieldValues, any>;
+  errors?: any;
 }
 
 function Input({
   input,
   setInput,
-  setPressedSubmit,
-  pressedSubmit,
   placeholder,
   textarea,
+  register,
+  name,
+  registerOptions,
+  errors,
 }: InputProps) {
-  const [incomplete, setIncomplete] = useState<boolean>(false);
-  const removeWarning = () => {
-    if (incomplete && setPressedSubmit) {
-      setIncomplete(false);
-      setPressedSubmit(false);
-    }
-  };
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    removeWarning();
     setInput(e.target.value);
   };
   const changeTextarea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    removeWarning();
     setInput(e.target.value);
   };
-  useEffect(() => {
-    if (pressedSubmit && !input) {
-      setIncomplete(true);
-    }
-  }, [pressedSubmit]);
+  const errored = errors && errors[name!];
   return textarea ? (
     <textarea
-      className={`textarea ${incomplete && 'warn'}`}
+      className={`textarea ${errored ? 'warn' : ''}`}
       placeholder={placeholder}
       value={input}
+      {...(register ? register(name!, registerOptions) : {})}
       onChange={(e) => changeTextarea(e)}
-      onClick={() => removeWarning()}
     />
   ) : (
     <input
-      className={`input ${incomplete && 'warn'}`}
+      className={`input ${errored ? 'warn' : ''}`}
       placeholder={placeholder}
       value={input}
+      {...(register ? register(name!, registerOptions) : {})}
       onChange={(e) => changeInput(e)}
-      onClick={() => removeWarning()}
     />
   );
 }
 
 Input.defaultProps = {
-  setPressedSubmit: false,
-  pressedSubmit: false,
-  placeholder: false,
-  textarea: false,
+  placeholder: '',
+  textarea: undefined,
+  register: undefined,
+  name: '',
+  registerOptions: undefined,
+  errors: undefined,
 };
 
-export default Input;
+export default observer(Input);
