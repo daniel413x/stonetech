@@ -19,7 +19,7 @@ function AppRouter({
   const { employee } = useContext(Context);
   return (
     <Routes>
-      {employee.isRegistered && authedRoutes?.map(({ path, Component }) => (
+      {employee.isEmployee && authedRoutes?.map(({ path, Component }) => (
         <Route
           key={path}
           path={path}

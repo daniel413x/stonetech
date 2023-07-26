@@ -15,12 +15,15 @@ export default class EmployeeStore implements IEmployee {
 
   email: string;
 
+  enabled: boolean;
+
   constructor() {
     this.roles = ['GUEST'];
     this.id = 'GUEST';
     this.name = 'Guest';
     this.avatar = '';
     this.email = '';
+    this.enabled = false;
     makeAutoObservable(this);
   }
 
@@ -41,7 +44,7 @@ export default class EmployeeStore implements IEmployee {
 
   unset() {
     this.roles = [GUEST];
-    this.id = localStorage.getItem('guestId')!;
+    this.id = '';
     this.name = 'Guest';
     this.avatar = '';
     this.email = '';
@@ -51,7 +54,7 @@ export default class EmployeeStore implements IEmployee {
     return this.roles.indexOf(GUEST) >= 0;
   }
 
-  get isRegistered() {
+  get isEmployee() {
     return this.roles.indexOf(EMPLOYEE) >= 0;
   }
 

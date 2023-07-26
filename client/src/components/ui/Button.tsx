@@ -1,10 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  className?: string;
-  onClick?: (...args: any[]) => void;
-  children?: ReactElement | (ReactElement | string)[] | string;
+type Styles = 'blank' | 'icon-button';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  buttonStyle?: Styles;
 }
 
 function Button({
@@ -12,13 +11,16 @@ function Button({
   className,
   onClick,
   children,
+  buttonStyle,
+  disabled,
 }: ButtonProps) {
   return (
     <button
-      className={`button ${className}`}
+      className={`button ${className} ${buttonStyle}`}
     // eslint-disable-next-line react/button-has-type
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -26,10 +28,7 @@ function Button({
 }
 
 Button.defaultProps = {
-  type: 'button',
-  className: '',
-  children: undefined,
-  onClick: undefined,
+  buttonStyle: undefined,
 };
 
 export default Button;

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface IRouterRoute {
   path: string;
@@ -68,3 +68,5 @@ export type QueryReqFetchMultiple<T> = {
   limit?: number;
   attributes?: T;
 };
+
+export type Children = ReactNode | undefined;

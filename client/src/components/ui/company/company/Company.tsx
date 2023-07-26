@@ -5,7 +5,7 @@ import { companyRoutes } from '../../../../paths/paths';
 import {
   ABOUT_ROUTE,
   ADVANTAGES_ROUTE,
-  FEEDBACK_ROUTE,
+  CONTACT_ROUTE,
   PARTNERS_ROUTE,
 } from '../../../../utils/consts';
 
@@ -27,8 +27,8 @@ function Company() {
           <NavLink to={PARTNERS_ROUTE} className={`${pathname.endsWith('partners') && 'current-route'}`}>
             Our partners
           </NavLink>
-          <NavLink to={FEEDBACK_ROUTE} className={`${pathname.endsWith('feedback') && 'current-route'}`}>
-            Feedback
+          <NavLink to={CONTACT_ROUTE} className={`${pathname.endsWith('contact') && 'current-route'}`}>
+            Contact
           </NavLink>
         </div>
         <AppRouter

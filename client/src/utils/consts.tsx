@@ -6,7 +6,6 @@ export const COMPANY_WILDCARD_ROUTE = 'company/*';
 export const ABOUT_ROUTE = 'about';
 export const ADVANTAGES_ROUTE = 'advantages';
 export const PARTNERS_ROUTE = 'partners';
-export const FEEDBACK_ROUTE = 'feedback';
 export const CONTACT_ROUTE = 'contact';
 export const PROJECTS_ROUTE = 'projects';
 export const SERVICES_ROUTE = 'services';

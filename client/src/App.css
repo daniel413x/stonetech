@@ -1,5 +1,6 @@
 :root {
   --primary-accent: #f88500;
+  --secondary-accent: #faa722;
   --primary-text: #333;
   --primary-text-light: #999;
   --primary-dark: #202328;
@@ -20,6 +21,7 @@
   --side-margins: 15vw;
   --side-margins-non-widescreen: 5rem;
   --styled-border-radius: 0 5px 0 5px;
+  --styled-border-radius-lg: 0 10px 0 10px;
   --navbar-height: 115px;
   --footer-height: 477px;
 }
@@ -58,8 +60,13 @@ body, html {
 }
 
 button {
-  all: inherit;
+  all: unset;
   cursor: pointer;
+}
+
+button:disabled {
+  pointer-events:none;
+  opacity: 0.35 
 }
 
 .button {
@@ -74,6 +81,21 @@ button {
   transition: all 0.1s linear;
   text-transform: uppercase;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  grid-gap: 0.25rem;
+}
+
+.button.blank {
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--primary-dark);
+}
+
+.button.icon-button {
+  padding: 0.66rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--primary-dark);
+  
 }
 
 .button:focus {
@@ -302,6 +324,72 @@ p {
 .blog-card:hover .read-more, .blog-card:focus .read-more {
   color: var(--primary-accent);
   text-decoration: underline;
+}
+
+.ReactModal__Overlay {
+  z-index: 1;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  max-width: 500px;
+  width: 100%;
+  inset: '';
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border-radius: var(--styled-border-radius-lg);
+  outline: none;
+}
+
+.modal .modal-lower-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 2rem 2rem 0;
+  width: 100%;
+  height: max-content;
+}
+
+.modal .modal-header {
+  background-color: var(--secondary-accent);
+  padding: 0rem 0.75rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  border-top-right-radius: 10px;
+}
+
+.modal .modal-header h4 {
+  margin: 1rem 0;
+}
+
+.modal .modal-header .button {
+  padding: 0.25rem;
+}
+
+.modal .modal-header .button:hover {
+  filter: brightness(1.05)
+}
+
+.modal .modal-body {
+  color: var(--primary-text);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-success-modal .modal-body {
+  align-items: center;
+  grid-gap: 1rem;
 }
 
 #navbar .nav-buttons-ul .nav-button:hover {
@@ -2122,16 +2210,16 @@ p {
   color: var(--primary-text);
 }
 
-#company #feedback h1 {
+#company #contact h1 {
   margin-bottom: 0;
 }
 
-#company #feedback p {
+#company #contact p {
   text-align: center;
   margin: 2rem 0 3.5rem;
 }
 
-#company #feedback form {
+#company #contact form {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
@@ -2140,7 +2228,7 @@ p {
   margin-bottom: 4.375rem;
 }
 
-#company #feedback form {
+#company #contact form {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
@@ -2149,16 +2237,15 @@ p {
   margin-bottom: 4.375rem;
 }
 
-#company #feedback form.success .input, #company #feedback form.success .textarea {
+#company #contact form.success .input, #company #contact form.success .textarea {
   background-color: var(--inactive-element);
   pointer-events: none;
   opacity: 0.5;
 }
 
-#company #feedback form.success .button {
+#company #contact form.success .button {
   background-color: var(--success-green-light);
   color: var(--primary-white);
-  pointer-events: none;
   display: flex;
   flex-direction: row;
   grid-gap: 0.4rem;
@@ -2168,7 +2255,6 @@ p {
 #footer {
   background-color: var(--primary-dark);
   width: 100%;
-  position: absolute;
 }
 
 #footer .wrapper {

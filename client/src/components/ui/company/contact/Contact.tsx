@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import Button from '../../Button';
 import Input from '../../Input';
 import PageHeader from '../../PageHeader';
+import ContactSuccessModal from './ContactSuccessModal';
 
-function Feedback() {
+function Contact() {
   const {
     register,
     formState: { errors },
@@ -22,19 +23,25 @@ function Feedback() {
     clearErrors();
   }, [name, contact, inquiry]);
   const [success, setSuccess] = useState<boolean>(false);
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
   const submit = () => {
     setSuccess(true);
+    setShowSuccessModal(true);
     setName('');
     setContact('');
     setInquiry('');
   };
   return (
-    <div id="feedback" className="right-col">
+    <div id="contact" className="right-col">
+      <ContactSuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
       <PageHeader
-        header="Feedback"
+        header="Contact"
       />
       <p>
-        Submit inquiries via our contact form.
+        Submit inquiries or feedback through our contact form.
         <br />
         Our representatives will respond promptly.
       </p>
@@ -71,6 +78,7 @@ function Feedback() {
           <Button
             type="submit"
             className="success"
+            disabled
           >
             <FontAwesomeIcon
               icon={faCheck}
@@ -89,4 +97,4 @@ function Feedback() {
   );
 }
 
-export default Feedback;
+export default Contact;

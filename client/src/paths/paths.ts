@@ -8,7 +8,7 @@ import Company from '../pages/company/Company';
 import About from '../pages/company/About';
 import Advantages from '../pages/company/Advantages';
 import Partners from '../pages/company/Partners';
-import Feedback from '../pages/company/Feedback';
+import Contact from '../pages/company/Contact';
 import * as routes from '../utils/consts';
 
 export const indexPublicRoutes = [
@@ -52,8 +52,8 @@ export const indexPublicRoutes = [
 
 export const companyRoutes = [
   {
-    path: routes.FEEDBACK_ROUTE,
-    Component: Feedback,
+    path: routes.CONTACT_ROUTE,
+    Component: Contact,
   },
   {
     path: routes.PARTNERS_ROUTE,

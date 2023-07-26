@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f90ceac0.css",
-    "main.js": "/static/js/main.00913d0e.js",
+    "main.css": "/static/css/main.c5961c7c.css",
+    "main.js": "/static/js/main.c7cdb5d7.js",
     "static/media/CeramicheCaesar.svg": "/static/media/CeramicheCaesar.a07d8f5b25bfdf1835027a22612586f0.svg",
     "static/media/quality-1.jpg": "/static/media/quality-1.af0db75100eca303c58e.jpg",
     "static/media/interior-8.jpg": "/static/media/interior-8.6ad538bde9faf1009b87.jpg",
@@ -49,13 +49,15 @@
     "static/media/leaf.svg": "/static/media/leaf.e6675d39d4b51589342f467d109d6cca.svg",
     "static/media/pickaxe.svg": "/static/media/pickaxe.5620214099d10fe9229e18ac27733eb0.svg",
     "static/media/truck.svg": "/static/media/truck.0c61e4e0f6d22763cbcf7a939665cc45.svg",
+    "static/media/close.svg": "/static/media/close.82bfd1fd04015ec67cdac5c06d844bfe.svg",
+    "static/media/envelope.svg": "/static/media/envelope.81724f1af888f11629cb6f1f3d3743a5.svg",
     "index.html": "/index.html",
     "static/media/triangle-right.svg": "/static/media/triangle-right.6d575c2a120517f41a6b4736570b12c1.svg",
-    "main.f90ceac0.css.map": "/static/css/main.f90ceac0.css.map",
-    "main.00913d0e.js.map": "/static/js/main.00913d0e.js.map"
+    "main.c5961c7c.css.map": "/static/css/main.c5961c7c.css.map",
+    "main.c7cdb5d7.js.map": "/static/js/main.c7cdb5d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.f90ceac0.css",
-    "static/js/main.00913d0e.js"
+    "static/css/main.c5961c7c.css",
+    "static/js/main.c7cdb5d7.js"
   ]
 }
