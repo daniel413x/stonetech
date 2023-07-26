@@ -1,14 +1,14 @@
-import FrontPage from '../pages/FrontPage';
-import Projects from '../pages/Projects';
-import ProjectPage from '../pages/ProjectPage';
-import Blog from '../pages/Blog';
-import Services from '../pages/Services';
-import ArticlePage from '../pages/ArticlePage';
-import Company from '../pages/Company';
-import About from '../pages/Company/About';
-import Advantages from '../pages/Company/Advantages';
-import Partners from '../pages/Company/Partners';
-import Feedback from '../pages/Company/Feedback';
+import FrontPage from '../pages/front_page/FrontPage';
+import Projects from '../pages/projects/Projects';
+import ProjectPage from '../pages/projects/project_page/ProjectPage';
+import Blog from '../pages/blog/Blog';
+import Services from '../pages/services/Services';
+import ArticlePage from '../pages/article_page/ArticlePage';
+import Company from '../pages/company/Company';
+import About from '../pages/company/About';
+import Advantages from '../pages/company/Advantages';
+import Partners from '../pages/company/Partners';
+import Feedback from '../pages/company/Feedback';
 import * as routes from '../utils/consts';
 
 export const indexPublicRoutes = [

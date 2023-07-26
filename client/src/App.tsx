@@ -2,11 +2,11 @@ import React, { useEffect, useContext, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Context from './context/context';
 import AppRouter from './components/routers/AppRouter';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/ui/navbar/Navbar';
 import { autoAuth } from './http/employeeAPI';
-import Footer from './components/Footer/Footer';
-import ScrollWrapper from './components/ScrollWrapper';
-import LoadingScreen from './components/LoadingScreen';
+import Footer from './components/ui/footer/Footer';
+import ScrollWrapper from './components/ui/ScrollWrapper';
+import LoadingScreen from './components/ui/LoadingScreen';
 import { indexPublicRoutes } from './paths/paths';
 
 function App() {
