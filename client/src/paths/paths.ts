@@ -10,6 +10,7 @@ import Advantages from '../pages/company/Advantages';
 import Partners from '../pages/company/Partners';
 import Contact from '../pages/company/Contact';
 import * as routes from '../utils/consts';
+import Login from '../pages/login/Login';
 
 export const indexPublicRoutes = [
   {
@@ -43,6 +44,10 @@ export const indexPublicRoutes = [
   {
     path: routes.PROJECTS_ROUTE,
     Component: Projects,
+  },
+  {
+    path: routes.LOGIN_ROUTE,
+    Component: Login,
   },
   {
     path: routes.INDEX_ROUTE,

@@ -34,6 +34,7 @@ function Contact() {
   return (
     <div id="contact" className="right-col">
       <ContactSuccessModal
+        id="contact-success-modal"
         open={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
       />

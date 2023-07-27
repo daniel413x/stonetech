@@ -83,7 +83,7 @@ class EmployeeController extends BaseController<Employee> {
       },
     });
     if (!employee) {
-      return next(ApiError.internal('Invalid credentials'));
+      return next(ApiError.unauthorized('Invalid credentials'));
     }
     const employeePassword = employee.password;
     const comparePassword = bcrypt.compareSync(
@@ -91,7 +91,7 @@ class EmployeeController extends BaseController<Employee> {
       employeePassword,
     );
     if (!comparePassword) {
-      return next(ApiError.internal('Incorrect password'));
+      return next(ApiError.unauthorized('Incorrect password'));
     }
     const token = generateJwt(employee, '24h');
     return res.json({ token });

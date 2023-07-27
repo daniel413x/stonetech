@@ -1,14 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   input: string;
   setInput: (e: string) => void;
-  placeholder?: string;
   textarea?: boolean;
   register?: UseFormRegister<FieldValues>,
-  name?: string,
   registerOptions?: RegisterOptions<FieldValues, any>;
   errors?: any;
 }
@@ -19,8 +17,9 @@ function Input({
   placeholder,
   textarea,
   register,
-  name,
   registerOptions,
+  name,
+  type,
   errors,
 }: InputProps) {
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,15 +44,14 @@ function Input({
       value={input}
       {...(register ? register(name!, registerOptions) : {})}
       onChange={(e) => changeInput(e)}
+      type={type}
     />
   );
 }
 
 Input.defaultProps = {
-  placeholder: '',
   textarea: undefined,
   register: undefined,
-  name: '',
   registerOptions: undefined,
   errors: undefined,
 };

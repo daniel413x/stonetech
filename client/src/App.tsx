@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Modal from 'react-modal';
 import Context from './context/context';
 import AppRouter from './components/routers/AppRouter';
 import Navbar from './components/ui/navbar/Navbar';
@@ -8,6 +9,9 @@ import Footer from './components/ui/footer/Footer';
 import ScrollWrapper from './components/ui/ScrollWrapper';
 import LoadingScreen from './components/ui/LoadingScreen';
 import { indexPublicRoutes } from './paths/paths';
+import ErrorModal from './components/ui/ErrorModal';
+
+Modal.setAppElement('#root');
 
 function App() {
   const {
@@ -46,6 +50,7 @@ function App() {
             publicRoutes={indexPublicRoutes}
           />
         </div>
+        <ErrorModal />
         <Footer />
       </ScrollWrapper>
     </Router>

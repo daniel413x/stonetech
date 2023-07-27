@@ -12,7 +12,7 @@ router.get(
   (req, res) => EmployeeController.auth(req, res),
 );
 router.post(
-  '/new',
+  '/',
   checkRoleMiddleware(ADMIN),
   (req, res, next) => EmployeeController.create(req, res, next),
 );

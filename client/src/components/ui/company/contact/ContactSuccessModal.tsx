@@ -7,9 +7,11 @@ import ModalBody from '../../ModalBody';
 function ContactSuccessModal({
   onClose,
   open,
+  id,
 }: ModalProps) {
   return (
     <Modal
+      id={id}
       onClose={onClose}
       open={open}
       className="contact-success-modal"

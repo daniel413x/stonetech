@@ -347,6 +347,10 @@ p {
   outline: none;
 }
 
+.modal.mute {
+  filter: brightness(0.8);
+}
+
 .modal .modal-lower-row {
   display: flex;
   justify-content: flex-end;
@@ -370,6 +374,18 @@ p {
 
 .modal .modal-header h4 {
   margin: 1rem 0;
+  display: flex;
+  grid-gap: 0.25rem;
+}
+
+.modal .modal-header h4 .key-icon {
+  position: relative;
+  top: 0.33rem;
+  transform: scale(0.95);
+}
+
+.modal .modal-header h4 path {
+  fill: #ffa
 }
 
 .modal .modal-header .button {
@@ -385,6 +401,40 @@ p {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+}
+
+.error-modal {
+  max-width: 450px;
+}
+
+.error-modal .modal-body {
+  color: #550A07;
+  font-weight: 500;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-modal .modal-body .line-two {
+  text-align: center;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.error-modal .modal-header {
+  background-color: #550A07;
+  color: #994E3B;
+}
+
+.error-modal .modal-header button {
+  background-color: #994E3B;
+}
+
+.error-modal .modal-header svg path {
+  fill: #550A07;
+}
+
+.error-modal .modal-lower-row button {
+  background-color: #994E3B;
 }
 
 .contact-success-modal .modal-body {
@@ -2250,6 +2300,30 @@ p {
   flex-direction: row;
   grid-gap: 0.4rem;
   transition: none;
+}
+
+.auth-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+}
+
+.auth-modal h2 {
+  display: flex;
+  align-items: center;
+  grid-gap: 0.25rem;
+}
+
+.auth-modal form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.25rem;
+  width: 75%;
 }
 
 #footer {
