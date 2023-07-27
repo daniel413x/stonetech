@@ -8,7 +8,7 @@ import { autoAuth } from './http/employeeAPI';
 import Footer from './components/ui/footer/Footer';
 import ScrollWrapper from './components/ui/ScrollWrapper';
 import LoadingScreen from './components/ui/LoadingScreen';
-import { indexPublicRoutes } from './paths/paths';
+import { indexEmployeeRoutes, indexPublicRoutes } from './paths/paths';
 import ErrorModal from './components/ui/ErrorModal';
 
 Modal.setAppElement('#root');
@@ -48,6 +48,7 @@ function App() {
         <div id="main-routes-content">
           <AppRouter
             publicRoutes={indexPublicRoutes}
+            authedRoutes={indexEmployeeRoutes}
           />
         </div>
         <ErrorModal />

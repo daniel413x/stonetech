@@ -452,6 +452,7 @@ p {
   background-color: rgba(0,0,0,calc(1 * 1v));
   border-radius: 0px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.033);
   font-weight: 500;
   height: auto;
   padding: 2.5rem var(--side-margins);
@@ -1995,18 +1996,18 @@ p {
   width: 100%;
 }
 
-#blog {
+.blog-list {
   padding-left: var(--side-margins-non-widescreen);
   padding-right: var(--side-margins-non-widescreen);
 }
 
-#blog .wrapper {
+.blog-list .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#blog .blog-ul {
+.blog-list .blog-ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, 360px);
   min-height: 1820px;
@@ -2019,7 +2020,7 @@ p {
 }
 
 @media (max-width: 916px) {
-  #blog .blog-ul {
+  .blog-list .blog-ul {
     min-height: 5500px;
   }
 }
@@ -2324,6 +2325,290 @@ p {
   flex-direction: column;
   grid-gap: 0.25rem;
   width: 75%;
+}
+
+#employees {
+  display: flex;
+  padding: 0px var(--side-margins) 70px;
+}
+
+@media (max-width: 767px) {
+  #employees {
+    flex-direction: column;
+  }
+}
+
+#employees > .wrapper {
+  margin: auto;
+  width: 100%;
+  padding-top: 0;
+}
+
+@media (min-width: 768px) {
+  #employees > .wrapper {
+    padding-top: 70px;
+  }
+}
+
+#employees .sidebar {
+  padding-top: 70px;
+}
+
+#employees .sidebar .nav-buttons-ul {
+  display: flex;
+  grid-gap: 1.25rem;
+}
+
+@media (min-width: 575px) {  
+  #employees .sidebar .nav-buttons-ul {
+    flex-direction: column;
+  }
+}
+
+#employees .sidebar h2 {
+  margin: 0;
+}
+
+#employees .sidebar .nav-button {
+  background-color: var(--divider-gray-light);
+}
+
+#employees .sidebar .nav-button {
+  color: black;
+  border-radius: var(--styled-border-radius)
+}
+
+#employees .sidebar .nav-button:hover {
+  color: var(--primary-white);
+  background-color: var(--primary-dark);
+}
+
+#employees .blog-list .blog-ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#employees .blog-list .blog-card .date {
+  background-color: var(--primary-dark);
+}
+
+#employees .blog-list .blog-card:hover .title {
+  border-left: 3px solid var(--primary-dark);
+}
+
+#employees .blog-list .blog-card:hover .read-more {
+  color: var(--primary-dark);
+}
+
+#employees .blog-list .page-control .current-page {
+  background-color: var(--primary-dark);
+}
+
+#employees .blog-list .page-control .current-page {
+  background-color: var(--primary-dark);
+}
+
+#employees .projects-list .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#employees .projects-list .projects-ul {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  padding: 2.5rem 0 0;
+}
+
+@media (min-width: 768px) {
+  #employees .projects-list .projects-ul {
+    padding-left: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #employees .projects-list .projects-ul {
+    padding: 0;
+  }
+}
+
+#employees .projects-list .project {
+  font-size: 0.875rem;
+  box-shadow: 0px 7px 1px 0px rgba(0, 0, 0, 0.025); 
+  padding: 0.75rem 0.75rem 0.66rem;
+  display: flex;
+  font-weight: 300;
+  color: var(--primary-text);
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center
+}
+
+#employees .projects-list .project:hover {
+  box-shadow: 0px 7px 1px 0px rgba(0, 0, 0, 0.05); 
+}
+
+#employees .projects-list .project .title {
+  max-width: 60%;
+  line-height: 170%;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.75rem;
+}
+
+#employees .projects-list .project .edit-icon {
+  position: relative;
+  top: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+#employees .projects-list .project .edit-icon path {
+  opacity: 0.25;
+}
+
+#employees .projects-list .project:hover .edit-icon path {
+  opacity: 0.5;
+}
+
+#employees .projects-list .project .employee {
+  width: max-content;
+  display: flex;
+}
+
+#employees .project-editor .slider {
+  margin-top: 70px;
+}
+
+#employees .project-editor .slider .image-control .button-overlay {
+  width: 100%;
+}
+/* 
+#employees .project-editor .slider .image-control .button-overlay:focus-active img {
+  outline: none;
+} */
+
+#employees .project-editor .slider .image-control .button-overlay:focus-visible::after {
+  content: '';
+  width: 99%;
+  height: 98%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  outline: var(--focus-outline-bold);
+  z-index: 1;
+}
+
+#employees .project-editor .slider .buttons {
+  position: absolute;
+  top: 5rem;
+  right: 0rem;
+  transform: translate(-50%, -50%);
+  display: flex;
+  z-index: 1;
+  grid-gap: 0.25rem;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+#employees .project-editor .slider .buttons .delete-button svg path {
+  fill: red;
+}
+
+#employees .project-editor .slider .buttons .make-thumbnail-button {
+  position: relative;
+}
+
+#employees .project-editor .slider .buttons .make-thumbnail-button .checkmark-icon {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0;
+}
+
+#employees .project-editor .page-header {
+  margin: 0;
+}
+
+#employees .project-editor .architect .image-control, #employees .project-editor .architect .image-control .button-overlay {
+  width: 105px;
+}
+
+#employees .project-editor .architect .dropdown-trigger {
+  font-weight: 600;
+}
+
+#employees .project-editor .architect .dropdown-trigger:focus-visible {
+  outline: var(--focus-outline);
+}
+
+#employees .project-editor .architect .dropdown-trigger.error {
+  box-shadow: var(--error-box-shadow);
+}
+
+#employees .project-editor .architect .employee-dropdown-item {
+  display: flex;
+  grid-gap: 0.75rem;
+  align-items: center;
+  width: 250px;
+  padding: 0 0.5rem;
+}
+
+#employees .project-editor .architect .employee-dropdown-item .avatar {
+  width: 50px;
+  height: 50px;
+  margin: 0
+}
+
+#employees .project-editor .info .pairs li {
+  position: relative;
+}
+
+#employees .project-editor .info .pairs .remove-info-button {
+  position: absolute;
+  top: 50%;
+  right: -5rem;
+  transform: translate(-0%, -50%);
+  display: flex;
+  padding: 0.25rem;
+}
+
+#employees .project-editor .image-control .buttons {
+  top: 8%;
+  right: 4%;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+#employees .project-editor .lower-row .add-buttons {
+  display: flex;
+}
+
+#employees .project-editor .lower-row .other-fields {
+  margin-top: 2rem;
+  display: flex;
+  grid-gap: 2rem;
+}
+
+#employees .project-editor .lower-row .other-fields .col {
+  display: flex;
+  flex-direction: column;
+}
+
+#employees .project-editor .bottom-row {
+  margin-left: auto;
+  display: flex;
+}
+
+#employees .project-editor .gallery-project.edited .text-control.error {
+  box-shadow: var(--error-box-shadow);  
+}
+
+#employees .project-editor .location-icon.error .text-control {
+  box-shadow: var(--error-box-shadow);  
 }
 
 #footer {

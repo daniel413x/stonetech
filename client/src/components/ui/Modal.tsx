@@ -30,9 +30,11 @@ function Modal({
     }
   }, [open]);
   useEffect(() => {
-    setIsFirstId(modal.order[0] === id);
-    setMute(modal.order[modal.order.length - 1] !== id);
-  }, [modal.order]);
+    if (open) {
+      setIsFirstId(modal.order[0] === id);
+      setMute(modal.order[modal.order.length - 1] !== id);
+    }
+  }, [open, modal.order]);
   return (
     <ReactModal
       id={id}

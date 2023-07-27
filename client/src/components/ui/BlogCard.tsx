@@ -1,21 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BLOG_ROUTE } from '../../utils/consts';
 import { IBlogPost } from '../../types/types';
-import { blogDate, makeSlug } from '../../utils/functions';
+import { blogDate } from '../../utils/functions';
+import { BLOG_ROUTE, EDIT_ROUTE } from '../../utils/consts';
 
-type BlogCardProps = Omit<IBlogPost, 'body' | 'id'>;
+export type BlogCardProps = Omit<IBlogPost, 'body' | 'id'> & { employeeSection?: boolean };
 
 function BlogCard({
   date,
   title,
   snippet,
   thumbnail,
+  employeeSection,
 }: BlogCardProps) {
-  const slug = makeSlug(title);
   const formattedDate = blogDate(date.toString());
   return (
-    <NavLink className="blog-card" to={`/${BLOG_ROUTE}/${slug}`}>
+    <NavLink className="blog-card" to={employeeSection ? `${EDIT_ROUTE}` : `/${BLOG_ROUTE}`}>
       <img alt={title} src={`${process.env.REACT_APP_API_URL}${thumbnail}`} />
       <span className="date">
         {formattedDate}
@@ -27,10 +27,14 @@ function BlogCard({
         {snippet}
       </p>
       <span className="read-more">
-        Read more
+        {employeeSection ? 'Edit' : 'Read more'}
       </span>
     </NavLink>
   );
 }
+
+BlogCard.defaultProps = {
+  employeeSection: false,
+};
 
 export default BlogCard;

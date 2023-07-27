@@ -147,6 +147,21 @@ export const advantagesCards = [
   },
 ];
 
+export const employeeSidebarButtons = [
+  {
+    to: `/${routes.EMPLOYEES_ROUTE}/${routes.PROJECTS_ROUTE}`,
+    label: 'Projects',
+  },
+  {
+    to: `/${routes.EMPLOYEES_ROUTE}/${routes.BLOG_ROUTE}`,
+    label: 'Blog',
+  },
+  {
+    to: `/${routes.EMPLOYEES_ROUTE}/${routes.MESSAGES_ROUTE}`,
+    label: 'Messages',
+  },
+];
+
 export const servicesCards = [
   {
     image: servicesOne,

@@ -3,11 +3,12 @@ import { observer } from 'mobx-react-lite';
 import { useSearchParams } from 'react-router-dom';
 import List from './List';
 import BlogCard from './BlogCard';
-import { fetchBlogs } from '../../http/blogAPI';
-import Context from '../../context/context';
 import PageControl from './PageControl';
-import usePagination from '../../hooks/usePagination';
 import { BlogCard as BlogCardType } from '../../types/types';
+import AddBlogPostButton from './employee/blog/AddBlogPostButton';
+import { fetchBlogs } from '../../http/blogAPI';
+import usePagination from '../../hooks/usePagination';
+import Context from '../../context/context';
 
 interface BlogsListProps {
   employeeSection?: boolean;
@@ -67,6 +68,7 @@ function BlogsList({
         {loading ? null : (
           <List
             className="blog-ul"
+            FirstItem={employeeSection ? <li><AddBlogPostButton /></li> : undefined}
             items={cards}
             renderAs={({
               title,
@@ -80,6 +82,7 @@ function BlogsList({
                   thumbnail={thumbnail}
                   date={date}
                   snippet={snippet}
+                  employeeSection={employeeSection}
                 />
               </li>
             )}

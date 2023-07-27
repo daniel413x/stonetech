@@ -11,6 +11,10 @@ import Partners from '../pages/company/Partners';
 import Contact from '../pages/company/Contact';
 import * as routes from '../utils/consts';
 import Login from '../pages/login/Login';
+import EmployeesRouter from '../components/routers/EmployeesRouter';
+import EmployeeIndex from '../pages/employee/EmployeeIndex';
+import EmployeeBlogIndex from '../pages/employee/blog/EmployeeBlogIndex';
+import EmployeeProjectsIndex from '../pages/employee/projects/EmployeeProjectsIndex';
 
 export const indexPublicRoutes = [
   {
@@ -79,5 +83,43 @@ export const companyRoutes = [
   {
     path: routes.INDEX_ROUTE,
     Component: About,
+  },
+];
+
+export const indexEmployeeRoutes = [
+  {
+    path: routes.EMPLOYEES_WILDCARD_ROUTE,
+    Component: EmployeesRouter,
+  },
+];
+
+export const employeeRoutes = [
+  {
+    path: routes.BLOG_ROUTE,
+    Component: EmployeeBlogIndex,
+  },
+  // {
+  //   path: `${routes.BLOG_ROUTE}/${routes.CREATE_ROUTE}`,
+  //   Component: CreateBlogPage,
+  // },
+  // {
+  //   path: `${routes.BLOG_ROUTE}/${routes.EDIT_ROUTE}/:slug`,
+  //   Component: EditBlogPage,
+  // },
+  {
+    path: routes.PROJECTS_ROUTE,
+    Component: EmployeeProjectsIndex,
+  },
+  // {
+  //   path: `${routes.PROJECTS_ROUTE}/${routes.CREATE_ROUTE}`,
+  //   Component: CreateProjectPage,
+  // },
+  // {
+  //   path: `${routes.PROJECTS_ROUTE}/${routes.EDIT_ROUTE}/:slug`,
+  //   Component: EditProjectPage,
+  // },
+  {
+    path: routes.INDEX_ROUTE,
+    Component: EmployeeIndex,
   },
 ];

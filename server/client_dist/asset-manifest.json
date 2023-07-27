@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4ecbb81b.css",
-    "main.js": "/static/js/main.a78e3944.js",
+    "main.css": "/static/css/main.1e4a1cfd.css",
+    "main.js": "/static/js/main.d6ef6853.js",
     "static/media/CeramicheCaesar.svg": "/static/media/CeramicheCaesar.a07d8f5b25bfdf1835027a22612586f0.svg",
     "static/media/quality-1.jpg": "/static/media/quality-1.af0db75100eca303c58e.jpg",
     "static/media/interior-8.jpg": "/static/media/interior-8.6ad538bde9faf1009b87.jpg",
@@ -37,11 +37,13 @@
     "static/media/services-1.jpg": "/static/media/services-1.c4f3d100fd0bbfc88d46.jpg",
     "static/media/services-2.jpg": "/static/media/services-2.f6827421d96ebeb1acf1.jpg",
     "static/media/engineering-1.jpg": "/static/media/engineering-1.48021cd6252f8311435b.jpg",
+    "static/media/add-blog-post.jpg": "/static/media/add-blog-post.925d541678b9c5603b66.jpg",
     "static/media/logo-gray.png": "/static/media/logo-gray.2568a96d4de961f8b8fa.png",
     "static/media/logo-white.png": "/static/media/logo-white.ebd8d17309b814996df5.png",
     "static/media/CeramicaBardelli.svg": "/static/media/CeramicaBardelli.8e646a2203cdeb3ebc54e316549d94ba.svg",
     "static/media/Mutina.svg": "/static/media/Mutina.4fa50e7f8b765cedfdf1e2b935b0376a.svg",
     "static/media/MosaicoMicro.svg": "/static/media/MosaicoMicro.4cdf2c77de80ff5c74525613b3d0efbe.svg",
+    "static/media/edit.svg": "/static/media/edit.484f93f77be0ed167a332690efe0d979.svg",
     "static/media/thumbsup.svg": "/static/media/thumbsup.5071a4f4bdccdb9526f6e37b2cfd308a.svg",
     "static/media/figma.svg": "/static/media/figma.bca51d22f45c0379be885d4a025a7f02.svg",
     "static/media/award.svg": "/static/media/award.432eec269e8113a22abd3a31786ac03c.svg",
@@ -54,11 +56,11 @@
     "static/media/envelope.svg": "/static/media/envelope.81724f1af888f11629cb6f1f3d3743a5.svg",
     "index.html": "/index.html",
     "static/media/triangle-right.svg": "/static/media/triangle-right.6d575c2a120517f41a6b4736570b12c1.svg",
-    "main.4ecbb81b.css.map": "/static/css/main.4ecbb81b.css.map",
-    "main.a78e3944.js.map": "/static/js/main.a78e3944.js.map"
+    "main.1e4a1cfd.css.map": "/static/css/main.1e4a1cfd.css.map",
+    "main.d6ef6853.js.map": "/static/js/main.d6ef6853.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ecbb81b.css",
-    "static/js/main.a78e3944.js"
+    "static/css/main.1e4a1cfd.css",
+    "static/js/main.d6ef6853.js"
   ]
 }

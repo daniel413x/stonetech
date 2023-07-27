@@ -48,7 +48,7 @@ export default abstract class BaseController<M extends Model> {
     const byNewest = req.query.byNewest as string;
     const order: any[] = [];
     const attributes = req.query.attributes as (string | [string, string])[];
-    for (let a = 0; a < attributes.length; a += 1) {
+    for (let a = 0; a < attributes?.length; a += 1) {
       if (/^\[/.test(attributes[a] as string)) {
         attributes[a] = JSON.parse(attributes[a] as string);
       }
