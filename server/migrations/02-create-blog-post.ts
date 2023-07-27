@@ -15,6 +15,10 @@ export default {
       type: Sequelize.STRING(120),
       allowNull: false,
     },
+    slug: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     id: {
       type: Sequelize.UUID,
       defaultValue: UUIDV4,

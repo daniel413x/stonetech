@@ -19,11 +19,7 @@ function ArticlePageContent() {
   useEffect(() => {
     (async () => {
       if (subroute === 'blog') {
-        const fetchedBlog = await fetchBlog(blogTitle!, {
-          attributes: [
-            'body', ['createdAt', 'date'], 'thumbnail', 'title', 'snippet',
-          ],
-        });
+        const fetchedBlog = await fetchBlog(blogTitle!);
         setContent(fetchedBlog);
         setIsBlog(true);
       } else {

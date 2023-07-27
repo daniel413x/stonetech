@@ -35,7 +35,6 @@ function BlogsList({
   useEffect(() => {
     (async () => {
       const fetchedBlogs = await fetchBlogs({
-        attributes: ['title', 'thumbnail', ['createdAt', 'date'], 'snippet'],
         limit: itemsPerPage,
         page,
       });
@@ -53,7 +52,6 @@ function BlogsList({
     }
     (async () => {
       const fetchedBlogs = await fetchBlogs({
-        attributes: ['title', 'thumbnail', ['createdAt', 'date'], 'snippet'],
         limit: itemsPerPage,
         page,
       });
@@ -72,15 +70,17 @@ function BlogsList({
             items={cards}
             renderAs={({
               title,
-              date,
+              createdAt,
               thumbnail,
               snippet,
+              slug,
             }) => (
               <li key={title}>
                 <BlogCard
+                  slug={slug}
                   title={title}
                   thumbnail={thumbnail}
-                  date={date}
+                  createdAt={createdAt}
                   snippet={snippet}
                   employeeSection={employeeSection}
                 />

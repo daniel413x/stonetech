@@ -43,7 +43,6 @@ function Projects() {
     }
     (async () => {
       const { rows: fetchedProjects, count: totalProjects } = await fetchProjects({
-        attributes: ['thumbnail', 'galleryTitle', 'client', 'fullTitle', 'id'],
         page,
       });
       projects.cacheProjects(fetchedProjects, page);
@@ -66,7 +65,6 @@ function Projects() {
     }
     const fetchMore = async () => {
       const { rows: fetchedProjects } = await fetchProjects({
-        attributes: ['thumbnail', 'galleryTitle', 'client', 'fullTitle', 'id'],
         page,
       });
       setProjectsToArrange(projectsToArrange.concat(fetchedProjects));
@@ -88,6 +86,7 @@ function Projects() {
             <li className="col-of-two" key={`${arr[0].id}-col`}>
               {arr.map((project) => (
                 <Project
+                  slug={project.slug}
                   key={project.id}
                   client={project.client}
                   galleryTitle={project.galleryTitle}
@@ -103,6 +102,7 @@ function Projects() {
         return (
           <li className="col-of-one" key={`${arr[0].id}-col`}>
             <Project
+              slug={arr[0].slug}
               key={arr[0].id}
               client={arr[0].client}
               galleryTitle={arr[0].galleryTitle}

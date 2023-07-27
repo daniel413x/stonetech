@@ -12,6 +12,8 @@ class BlogPost extends BaseModel<BlogPost> implements IBlogPost {
 
   title!: string;
 
+  slug!: string;
+
   snippet!: string;
 
   body!: string[];
@@ -26,6 +28,10 @@ BlogPost.init(
       primaryKey: true,
     },
     thumbnail: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    slug: {
       type: DataTypes.STRING,
       allowNull: false,
     },

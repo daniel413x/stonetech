@@ -20,6 +20,8 @@ class Project extends BaseModel<Project> implements IProject {
 
   body!: string[];
 
+  slug!: string;
+
   info!: [string, string][];
 
   EmployeeId!: string;
@@ -39,6 +41,10 @@ Project.init(
     },
     images: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+    slug: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     client: {

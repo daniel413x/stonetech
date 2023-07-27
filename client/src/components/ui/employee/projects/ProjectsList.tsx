@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useSearchParams, NavLink } from 'react-router-dom';
-import { v4 } from 'uuid';
 import Context from '../../../../context/context';
 import usePagination from '../../../../hooks/usePagination';
 import { fetchProjects } from '../../../../http/projectAPI';
@@ -14,7 +13,6 @@ import { ReactComponent as EditIcon } from '../../../../assets/icons/edit.svg';
 function ProjectList() {
   const [loading, setLoading] = useState<boolean>(true);
   const [cards, setCards] = useState<ProjectInGallery[]>([]);
-  // const [cards, setCards] = useState<BlogCardType[]>([]);
   const [searchParams] = useSearchParams({});
   const page = Number(searchParams.get('page'));
   const { projects } = useContext(Context);
@@ -30,11 +28,11 @@ function ProjectList() {
   });
   useEffect(() => {
     (async () => {
-      const fetchedBlogs = await fetchProjects({
+      const fetchedProjects = await fetchProjects({
         limit: itemsPerPage,
         page,
       });
-      const { rows, count } = fetchedBlogs;
+      const { rows, count } = fetchedProjects;
       setCards(rows);
       projects.cacheProjects(rows, page);
       projects.setItemsInDb(count);
@@ -47,11 +45,11 @@ function ProjectList() {
       return;
     }
     (async () => {
-      const fetchedBlogs = await fetchProjects({
+      const fetchedProjects = await fetchProjects({
         limit: itemsPerPage,
         page,
       });
-      const { rows } = fetchedBlogs;
+      const { rows } = fetchedProjects;
       setCards(rows);
       projects.cacheProjects(rows, page);
     })();
@@ -65,14 +63,15 @@ function ProjectList() {
             FirstItem={<li><NavLink className="project" to={CREATE_ROUTE}>+ Create New Project</NavLink></li>}
             items={cards}
             renderAs={({
-              galleryTitle,
+              fullTitle,
               employee,
+              slug,
             }) => (
-              <li key={v4()}>
-                <NavLink className="project" to={`${EDIT_ROUTE}`}>
+              <li key={slug}>
+                <NavLink className="project" to={`${EDIT_ROUTE}/${slug}`}>
                   <span className="title">
                     <EditIcon className="edit-icon" />
-                    {galleryTitle}
+                    {fullTitle}
                   </span>
                   <span className="employee">{employee?.name}</span>
                 </NavLink>

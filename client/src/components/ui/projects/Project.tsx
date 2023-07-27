@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ProjectInGallery } from '../../../types/types';
-import { makeSlug, randomInt } from '../../../utils/functions';
+import { randomInt } from '../../../utils/functions';
 
 type ProjectProps = Omit<ProjectInGallery, 'id'> & {
   size: 'sm' | 'lg';
@@ -10,11 +10,10 @@ type ProjectProps = Omit<ProjectInGallery, 'id'> & {
 };
 
 function Project({
-  thumbnail, galleryTitle, client, size, animDelay, fullTitle,
+  thumbnail, galleryTitle, client, size, animDelay, slug,
 }: ProjectProps) {
   const [show, setShow] = useState(false);
   const animNumber = randomInt(1, 4);
-  const slug = makeSlug(fullTitle);
   setTimeout(() => setShow(true), animDelay);
   return (
     <div className={`img-wrapper ${size} anim-${animNumber} ${show && 'show'}`}>

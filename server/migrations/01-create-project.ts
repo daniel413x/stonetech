@@ -22,6 +22,10 @@ export default {
       allowNull: false,
       type: Sequelize.STRING,
     },
+    slug: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     body: {
       allowNull: false,
       type: Sequelize.ARRAY(Sequelize.STRING(1000)),

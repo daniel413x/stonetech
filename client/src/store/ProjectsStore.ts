@@ -1,10 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import {
-  ProjectInGallery,
+  IProject,
 } from '../types/types';
 
 export default class ProjectsStore {
-  cachedProjects: { [page: number]: ProjectInGallery[] };
+  cachedProjects: { [page: number]: IProject[] };
 
   itemsInDb: number;
 
@@ -17,7 +17,7 @@ export default class ProjectsStore {
     makeAutoObservable(this);
   }
 
-  cacheProjects(arr: ProjectInGallery[], page: number) {
+  cacheProjects(arr: IProject[], page: number) {
     this.cachedProjects[page] = arr;
   }
 

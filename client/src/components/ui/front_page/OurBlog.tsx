@@ -31,7 +31,6 @@ function OurBlog() {
     (async () => {
       const fetchedBlogs = await fetchBlogs({
         limit: 2,
-        attributes: ['title', 'snippet', 'thumbnail', ['createdAt', 'date']],
       });
       blog.cacheFrontPageCards(fetchedBlogs.rows);
     })();
@@ -47,14 +46,16 @@ function OurBlog() {
         )}
         items={blog.cachedFrontPageCards}
         renderAs={({
-          date,
+          createdAt,
           title,
           snippet,
           thumbnail,
+          slug,
         }) => (
           <li key={title}>
             <BlogCard
-              date={date}
+              slug={slug}
+              createdAt={createdAt}
               title={title}
               snippet={snippet}
               thumbnail={thumbnail}

@@ -7,15 +7,16 @@ import { BLOG_ROUTE, EDIT_ROUTE } from '../../utils/consts';
 export type BlogCardProps = Omit<IBlogPost, 'body' | 'id'> & { employeeSection?: boolean };
 
 function BlogCard({
-  date,
+  createdAt,
   title,
   snippet,
   thumbnail,
   employeeSection,
+  slug,
 }: BlogCardProps) {
-  const formattedDate = blogDate(date.toString());
+  const formattedDate = blogDate(createdAt.toString());
   return (
-    <NavLink className="blog-card" to={employeeSection ? `${EDIT_ROUTE}` : `/${BLOG_ROUTE}`}>
+    <NavLink className="blog-card" to={employeeSection ? `${EDIT_ROUTE}/${slug}` : `/${BLOG_ROUTE}/${slug}`}>
       <img alt={title} src={`${process.env.REACT_APP_API_URL}${thumbnail}`} />
       <span className="date">
         {formattedDate}

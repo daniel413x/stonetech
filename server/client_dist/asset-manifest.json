@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1e4a1cfd.css",
-    "main.js": "/static/js/main.d6ef6853.js",
+    "main.js": "/static/js/main.379b8dff.js",
     "static/media/CeramicheCaesar.svg": "/static/media/CeramicheCaesar.a07d8f5b25bfdf1835027a22612586f0.svg",
     "static/media/quality-1.jpg": "/static/media/quality-1.af0db75100eca303c58e.jpg",
     "static/media/interior-8.jpg": "/static/media/interior-8.6ad538bde9faf1009b87.jpg",
@@ -57,10 +57,10 @@
     "index.html": "/index.html",
     "static/media/triangle-right.svg": "/static/media/triangle-right.6d575c2a120517f41a6b4736570b12c1.svg",
     "main.1e4a1cfd.css.map": "/static/css/main.1e4a1cfd.css.map",
-    "main.d6ef6853.js.map": "/static/js/main.d6ef6853.js.map"
+    "main.379b8dff.js.map": "/static/js/main.379b8dff.js.map"
   },
   "entrypoints": [
     "static/css/main.1e4a1cfd.css",
-    "static/js/main.d6ef6853.js"
+    "static/js/main.379b8dff.js"
   ]
 }

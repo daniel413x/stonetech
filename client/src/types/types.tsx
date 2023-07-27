@@ -25,6 +25,7 @@ export interface IProject {
   info: [string, string][];
   employee?: IEmployee;
   body?: string[];
+  slug: string;
 }
 
 export interface IPartner {
@@ -43,7 +44,8 @@ export interface ICommonArticleProps {
 export interface IBlogPost extends Omit<ICommonArticleProps, 'thumbnail'> {
   id: string;
   thumbnail: string;
-  date: string;
+  createdAt: string;
+  slug: string;
 }
 
 export type BlogCard = Omit<IBlogPost, 'id' | 'body'>;
@@ -55,18 +57,14 @@ export interface INavButton {
 
 export type ProjectInGallery = Omit<IProject, 'images' | 'info' | 'seniorArchitect' | 'body' | 'location'>;
 
-export type ProjectAttributes = ('galleryTitle' | 'fullTitle' | 'images' | 'thumbnail' | 'info' | 'seniorArchitect' | 'body' | 'location' | 'client' | 'id')[];
-
-export type BlogAttributes = ('title' | ['createdAt', string] | 'thumbnail' | 'id' | 'body' | 'snippet')[];
-
-export type QueryReqFetchOne<T> = {
-  attributes?: T;
-};
-
-export type QueryReqFetchMultiple<T> = {
+export type QueryReqFetchMultiple = {
   page?: number;
   limit?: number;
-  attributes?: T;
+};
+
+export type QueryResFetchMultiple<T> = {
+  rows: T[];
+  count: number;
 };
 
 export type Children = ReactNode | undefined;
