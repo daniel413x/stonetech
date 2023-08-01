@@ -12,9 +12,9 @@ function EmployeeIndexLayout({
   return (
     <>
       <Sidebar />
-      <div className="wrapper">
+      <main className="wrapper">
         {children}
-      </div>
+      </main>
     </>
   );
 }

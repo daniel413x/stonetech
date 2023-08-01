@@ -10,8 +10,8 @@ router.get(
   (req, res) => ProjectController.get(req, res),
 );
 router.get(
-  '/:fullTitle',
-  (req, res, next) => ProjectController.getByTitle(req, res, next),
+  '/:slug',
+  (req, res, next) => ProjectController.getBySlug(req, res, next),
 );
 router.post(
   '/',

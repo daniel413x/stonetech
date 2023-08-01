@@ -10,8 +10,8 @@ router.get(
   (req, res) => BlogPostController.get(req, res),
 );
 router.get(
-  '/:title',
-  (req, res) => BlogPostController.getByTitle(req, res),
+  '/:slug',
+  (req, res) => BlogPostController.getBySlug(req, res),
 );
 router.post(
   '/',
@@ -19,7 +19,7 @@ router.post(
   (req, res) => BlogPostController.create(req, res),
 );
 router.put(
-  '/',
+  '/:id',
   checkRoleMiddleware(EMPLOYEE),
   (req, res) => BlogPostController.edit(req, res),
 );

@@ -10,15 +10,17 @@ function Navbar() {
   const { pathname } = useLocation();
   const notFrontPage = pathname !== '/';
   return (
-    <nav id="navbar" className={`${notFrontPage && 'dark'}`}>
-      <img
-        className="logo"
-        src={notFrontPage ? logoBlack : logoWhite}
-        alt="Stonetech logo"
-      />
-      <NavButtons items={mainNavButtons} />
-      <SocMediaIcons />
-    </nav>
+    <header>
+      <nav id="navbar" className={`${notFrontPage && 'dark'}`}>
+        <img
+          className="logo"
+          src={notFrontPage ? logoBlack : logoWhite}
+          alt="Stonetech logo"
+        />
+        <NavButtons items={mainNavButtons} />
+        <SocMediaIcons />
+      </nav>
+    </header>
   );
 }
 

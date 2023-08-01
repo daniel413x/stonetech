@@ -77,7 +77,7 @@ function AuthModal() {
             registerOptions={{ required: true }}
             type="password"
           />
-          <Button>Login</Button>
+          <Button type="submit">Login</Button>
         </form>
       </ModalBody>
     </Modal>

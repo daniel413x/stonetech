@@ -68,3 +68,11 @@ export type QueryResFetchMultiple<T> = {
 };
 
 export type Children = ReactNode | undefined;
+
+export type FormFile = {
+  file?: File;
+  filename: string;
+  url: string;
+};
+
+export type BodyInEditor = (string | FormFile)[];

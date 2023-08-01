@@ -15,6 +15,8 @@ import EmployeesRouter from '../components/routers/EmployeesRouter';
 import EmployeeIndex from '../pages/employee/EmployeeIndex';
 import EmployeeBlogIndex from '../pages/employee/blog/EmployeeBlogIndex';
 import EmployeeProjectsIndex from '../pages/employee/projects/EmployeeProjectsIndex';
+import CreateBlogPage from '../pages/employee/blog/create/CreateBlogPage';
+import EditBlogPage from '../pages/employee/blog/edit/EditBlogPage';
 
 export const indexPublicRoutes = [
   {
@@ -98,14 +100,14 @@ export const employeeRoutes = [
     path: routes.BLOG_ROUTE,
     Component: EmployeeBlogIndex,
   },
-  // {
-  //   path: `${routes.BLOG_ROUTE}/${routes.CREATE_ROUTE}`,
-  //   Component: CreateBlogPage,
-  // },
-  // {
-  //   path: `${routes.BLOG_ROUTE}/${routes.EDIT_ROUTE}/:slug`,
-  //   Component: EditBlogPage,
-  // },
+  {
+    path: `${routes.BLOG_ROUTE}/${routes.CREATE_ROUTE}`,
+    Component: CreateBlogPage,
+  },
+  {
+    path: `${routes.BLOG_ROUTE}/${routes.EDIT_ROUTE}/:slug`,
+    Component: EditBlogPage,
+  },
   {
     path: routes.PROJECTS_ROUTE,
     Component: EmployeeProjectsIndex,

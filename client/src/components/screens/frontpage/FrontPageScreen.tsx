@@ -8,14 +8,14 @@ import FrontPageSlider from '../../ui/front_page/Slider';
 
 function FrontPageScreen() {
   return (
-    <div id="front-page">
+    <main id="front-page">
       <FrontPageSlider />
       <Statistics />
       <Projects />
       <AboutUs />
       <OurPartners />
       <OurBlog />
-    </div>
+    </main>
   );
 }
 

@@ -13,7 +13,7 @@ class ProjectController extends BaseController<Project> {
     this.execFindAndCountAll(req, res);
   }
 
-  getByTitle(req: Request, res: Response, next: NextFunction) {
+  getBySlug(req: Request, res: Response, next: NextFunction) {
     const options = {
       include: [{
         model: Employee,
@@ -24,11 +24,6 @@ class ProjectController extends BaseController<Project> {
   }
 
   create(req: Request, res: Response) {
-    /*
-    req.body.images = JSON.parse(req.body.images);
-    req.body.body = JSON.parse(req.body.body);
-    req.body.info = JSON.parse(req.body.info);
-    */
     this.execCreate(req, res);
   }
 

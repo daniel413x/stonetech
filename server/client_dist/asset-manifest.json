@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e4a1cfd.css",
-    "main.js": "/static/js/main.379b8dff.js",
+    "main.css": "/static/css/main.eaba8cab.css",
+    "main.js": "/static/js/main.d7de817f.js",
     "static/media/CeramicheCaesar.svg": "/static/media/CeramicheCaesar.a07d8f5b25bfdf1835027a22612586f0.svg",
     "static/media/quality-1.jpg": "/static/media/quality-1.af0db75100eca303c58e.jpg",
     "static/media/interior-8.jpg": "/static/media/interior-8.6ad538bde9faf1009b87.jpg",
@@ -30,6 +30,8 @@
     "static/media/header-2.jpg": "/static/media/header-2.99018224b8ccaa1520c0.jpg",
     "static/media/engineering-2.jpg": "/static/media/engineering-2.2b4d6d980bdb58298f4b.jpg",
     "static/media/interior-2.jpg": "/static/media/interior-2.c75a156d51872780caaf.jpg",
+    "static/media/new-header-image.jpg": "/static/media/new-header-image.7c3fcbafd0173604da1f.jpg",
+    "static/media/new-image.jpg": "/static/media/new-image.27af6405dbedaa869b57.jpg",
     "static/media/services-5.jpg": "/static/media/services-5.03add444131134c47970.jpg",
     "static/media/services-4.jpg": "/static/media/services-4.0f550933ab48d7c4b898.jpg",
     "static/media/services-6.jpg": "/static/media/services-6.2fc9d4733928e855f1a4.jpg",
@@ -40,10 +42,13 @@
     "static/media/add-blog-post.jpg": "/static/media/add-blog-post.925d541678b9c5603b66.jpg",
     "static/media/logo-gray.png": "/static/media/logo-gray.2568a96d4de961f8b8fa.png",
     "static/media/logo-white.png": "/static/media/logo-white.ebd8d17309b814996df5.png",
+    "static/media/new-avatar-image.jpg": "/static/media/new-avatar-image.66e2c553d3c65b1e65fd.jpg",
+    "static/media/new-slider-image.jpg": "/static/media/new-slider-image.e9376eb76b4f87fdb290.jpg",
     "static/media/CeramicaBardelli.svg": "/static/media/CeramicaBardelli.8e646a2203cdeb3ebc54e316549d94ba.svg",
     "static/media/Mutina.svg": "/static/media/Mutina.4fa50e7f8b765cedfdf1e2b935b0376a.svg",
     "static/media/MosaicoMicro.svg": "/static/media/MosaicoMicro.4cdf2c77de80ff5c74525613b3d0efbe.svg",
     "static/media/edit.svg": "/static/media/edit.484f93f77be0ed167a332690efe0d979.svg",
+    "static/media/trash.svg": "/static/media/trash.704175cdb113e68d00b5d2f473a3b352.svg",
     "static/media/thumbsup.svg": "/static/media/thumbsup.5071a4f4bdccdb9526f6e37b2cfd308a.svg",
     "static/media/figma.svg": "/static/media/figma.bca51d22f45c0379be885d4a025a7f02.svg",
     "static/media/award.svg": "/static/media/award.432eec269e8113a22abd3a31786ac03c.svg",
@@ -51,16 +56,19 @@
     "static/media/leaf.svg": "/static/media/leaf.e6675d39d4b51589342f467d109d6cca.svg",
     "static/media/pickaxe.svg": "/static/media/pickaxe.5620214099d10fe9229e18ac27733eb0.svg",
     "static/media/key.svg": "/static/media/key.965f3199e10c04c21d4d68b1d386958e.svg",
+    "static/media/hammer.svg": "/static/media/hammer.7090ecb325ef269e8fa09baadf9c2460.svg",
     "static/media/truck.svg": "/static/media/truck.0c61e4e0f6d22763cbcf7a939665cc45.svg",
     "static/media/close.svg": "/static/media/close.82bfd1fd04015ec67cdac5c06d844bfe.svg",
     "static/media/envelope.svg": "/static/media/envelope.81724f1af888f11629cb6f1f3d3743a5.svg",
     "index.html": "/index.html",
+    "static/media/add-image.svg": "/static/media/add-image.4cbb47fc318218817bc28be3abc6b198.svg",
+    "static/media/add-paragraph.svg": "/static/media/add-paragraph.0446d5a5b6e0240bdb10b71d4432db97.svg",
     "static/media/triangle-right.svg": "/static/media/triangle-right.6d575c2a120517f41a6b4736570b12c1.svg",
-    "main.1e4a1cfd.css.map": "/static/css/main.1e4a1cfd.css.map",
-    "main.379b8dff.js.map": "/static/js/main.379b8dff.js.map"
+    "main.eaba8cab.css.map": "/static/css/main.eaba8cab.css.map",
+    "main.d7de817f.js.map": "/static/js/main.d7de817f.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e4a1cfd.css",
-    "static/js/main.379b8dff.js"
+    "static/css/main.eaba8cab.css",
+    "static/js/main.d7de817f.js"
   ]
 }

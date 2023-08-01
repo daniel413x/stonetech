@@ -7,7 +7,7 @@ import { IEmployee } from '../types/types';
 import { EMPLOYEE } from '../utils/consts';
 import Employee from '../db/models/Employee';
 import BaseController from './BaseController';
-import { assignBodyAndProcessImages } from '../utils/functions';
+import { saveImages } from '../utils/functions';
 
 const generateJwt = ({
   id,
@@ -106,7 +106,7 @@ class EmployeeController extends BaseController<Employee> {
   async edit(req: Request, res: Response) {
     let updatedVals;
     if (req.files) {
-      updatedVals = assignBodyAndProcessImages(req);
+      updatedVals = saveImages(req);
     } else {
       updatedVals = req.body;
     }

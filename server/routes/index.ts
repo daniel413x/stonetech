@@ -9,6 +9,7 @@ const router = Router();
 
 router.use('/employee', employeeRouter);
 router.use('/blog', blogPostRouter);
+router.use('/blogpost', blogPostRouter);
 router.use('/project', projectRouter);
 router.use('/testing', testingRouter);
 router.use('/util', utilRouter);

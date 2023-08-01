@@ -18,7 +18,7 @@ function Button({
     <button
       className={`button ${className} ${buttonStyle}`}
     // eslint-disable-next-line react/button-has-type
-      type={type}
+      type={type || 'button'}
       onClick={onClick}
       disabled={disabled}
     >

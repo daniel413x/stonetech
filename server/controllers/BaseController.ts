@@ -11,7 +11,7 @@ import {
   Op,
 } from 'sequelize';
 import ApiError from '../error/ApiError';
-import { assignBodyAndProcessImages } from '../utils/functions';
+import { saveImages } from '../utils/functions';
 
 export default abstract class BaseController<M extends Model> {
   model: ModelStatic<Model>;
@@ -69,9 +69,9 @@ export default abstract class BaseController<M extends Model> {
   }
 
   async execCreate(req: Request, res: Response, options?: Omit<FindAndCountOptions<Attributes<M>>, 'group'>) {
-    let form = req.body;
+    const form = req.body;
     if (req.files) {
-      form = assignBodyAndProcessImages(req);
+      await saveImages(req);
     }
     let data = await this.model.create(form);
     if (options) {
@@ -82,9 +82,9 @@ export default abstract class BaseController<M extends Model> {
 
   async execUpdate(req: Request, res: Response) {
     const { id } = req.params;
-    let form = req.body;
+    const form = req.body;
     if (req.files) {
-      form = assignBodyAndProcessImages(req);
+      saveImages(req);
     }
     await this.model.update(form, { where: { id } });
     return res.status(204).end();

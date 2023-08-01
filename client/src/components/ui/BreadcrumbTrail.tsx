@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 interface BreadcrumbTrailProps {
-  arr: string[];
+  arr?: string[];
+  grayedLinks?: string[];
 }
 
-function BreadcrumbTrail({ arr }: BreadcrumbTrailProps) {
+function BreadcrumbTrail({ arr, grayedLinks = ['edit'] }: BreadcrumbTrailProps) {
+  const breadcrumbs = arr || useLocation().pathname.split(/\//).filter(Boolean);
   return (
     <div className="breadcrumb-trail">
       <div className="breadcrumb" key="main">
@@ -16,15 +18,16 @@ function BreadcrumbTrail({ arr }: BreadcrumbTrailProps) {
           &gt;
         </span>
       </div>
-      {arr.map((str, i) => {
+      {breadcrumbs.map((str, i) => {
         let navBack = '';
-        for (let n = 1; n < arr.length - i; n += 1) {
-          navBack += '../';
+        for (let n = 0; n < i + 1; n += 1) {
+          navBack += `/${breadcrumbs[n]}`;
         }
-        if (i < arr.length - 1) {
+        if (i < breadcrumbs.length - 1) {
+          const grayed = grayedLinks && grayedLinks.indexOf(str) >= 0;
           return (
             <div className="breadcrumb" key={str}>
-              <NavLink to={`${navBack}${str!}`} className="previous">
+              <NavLink to={navBack} className={`previous ${grayed ? 'blocked' : ''}`} tabIndex={grayed ? -1 : 0}>
                 {str}
               </NavLink>
               <span className="angle">
@@ -42,5 +45,10 @@ function BreadcrumbTrail({ arr }: BreadcrumbTrailProps) {
     </div>
   );
 }
+
+BreadcrumbTrail.defaultProps = {
+  arr: undefined,
+  grayedLinks: undefined,
+};
 
 export default BreadcrumbTrail;

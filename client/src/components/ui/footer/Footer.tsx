@@ -8,7 +8,7 @@ import { ReactComponent as AngleUp } from '../../../assets/icons/angleup.svg';
 
 function Footer() {
   return (
-    <div id="footer">
+    <footer id="footer">
       <div className="wrapper">
         <div className="first-col">
           <img className="logo" src={logo} alt="Stonetech logo" />
@@ -54,7 +54,7 @@ function Footer() {
           <AngleUp />
         </NavLink>
       </div>
-    </div>
+    </footer>
   );
 }
 
