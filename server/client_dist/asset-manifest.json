@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.eaba8cab.css",
-    "main.js": "/static/js/main.d7de817f.js",
+    "main.css": "/static/css/main.ae405370.css",
+    "main.js": "/static/js/main.77c9d24b.js",
     "static/media/CeramicheCaesar.svg": "/static/media/CeramicheCaesar.a07d8f5b25bfdf1835027a22612586f0.svg",
     "static/media/quality-1.jpg": "/static/media/quality-1.af0db75100eca303c58e.jpg",
     "static/media/interior-8.jpg": "/static/media/interior-8.6ad538bde9faf1009b87.jpg",
@@ -58,17 +58,20 @@
     "static/media/key.svg": "/static/media/key.965f3199e10c04c21d4d68b1d386958e.svg",
     "static/media/hammer.svg": "/static/media/hammer.7090ecb325ef269e8fa09baadf9c2460.svg",
     "static/media/truck.svg": "/static/media/truck.0c61e4e0f6d22763cbcf7a939665cc45.svg",
+    "static/media/select-thumbnail-icon.svg": "/static/media/select-thumbnail-icon.a205dac3311286f8680194f93c0594d0.svg",
     "static/media/close.svg": "/static/media/close.82bfd1fd04015ec67cdac5c06d844bfe.svg",
     "static/media/envelope.svg": "/static/media/envelope.81724f1af888f11629cb6f1f3d3743a5.svg",
     "index.html": "/index.html",
+    "static/media/checkmark.svg": "/static/media/checkmark.a30110782647af85161e97b391131e2b.svg",
     "static/media/add-image.svg": "/static/media/add-image.4cbb47fc318218817bc28be3abc6b198.svg",
     "static/media/add-paragraph.svg": "/static/media/add-paragraph.0446d5a5b6e0240bdb10b71d4432db97.svg",
     "static/media/triangle-right.svg": "/static/media/triangle-right.6d575c2a120517f41a6b4736570b12c1.svg",
-    "main.eaba8cab.css.map": "/static/css/main.eaba8cab.css.map",
-    "main.d7de817f.js.map": "/static/js/main.d7de817f.js.map"
+    "static/media/triangle-down.svg": "/static/media/triangle-down.c68b7bcad084361c96fefc5e6bb0721b.svg",
+    "main.ae405370.css.map": "/static/css/main.ae405370.css.map",
+    "main.77c9d24b.js.map": "/static/js/main.77c9d24b.js.map"
   },
   "entrypoints": [
-    "static/css/main.eaba8cab.css",
-    "static/js/main.d7de817f.js"
+    "static/css/main.ae405370.css",
+    "static/js/main.77c9d24b.js"
   ]
 }

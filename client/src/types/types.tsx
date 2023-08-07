@@ -14,6 +14,8 @@ export interface IEmployee {
   bio?: string;
 }
 
+export type ProjectInfo = [string, string][];
+
 export interface IProject {
   id: string;
   fullTitle: string;
@@ -22,7 +24,7 @@ export interface IProject {
   location: string;
   images: string[];
   thumbnail: string;
-  info: [string, string][];
+  info: ProjectInfo;
   employee?: IEmployee;
   body?: string[];
   slug: string;

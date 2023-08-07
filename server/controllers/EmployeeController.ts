@@ -34,6 +34,10 @@ class EmployeeController extends BaseController<Employee> {
     super(Employee);
   }
 
+  async get(req: Request, res: Response) {
+    return this.execFindAndCountAll(req, res);
+  }
+
   async create(req: Request, res: Response, next: NextFunction) {
     const {
       email,

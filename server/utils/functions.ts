@@ -12,3 +12,7 @@ export async function saveImages(req: Request) {
     await file.mv(path.resolve(__dirname, '..', 'static', filename));
   }));
 }
+
+export function parseBody(req: Request) {
+  return JSON.parse(req.body.body);
+}

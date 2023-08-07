@@ -1,11 +1,12 @@
-import React, { ReactNode, ReactElement } from 'react';
+import React, { ReactNode } from 'react';
+import { Children } from '../../types/types';
 
 interface ListProps<T> {
   items: T[];
   renderAs: (list: T, index?: number) => ReactNode;
   className?: string;
-  FirstItem?: ReactElement | ReactElement[];
-  LastItem?: ReactElement | ReactElement[];
+  FirstItem?: Children;
+  LastItem?: Children;
   id?: string;
 }
 

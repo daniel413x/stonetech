@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import BlogPost from '../db/models/BlogPost';
 // import ApiError from '../error/ApiError';
 import BaseController from './BaseController';
+import { parseBody } from '../utils/functions';
 
 class BlogPostController extends BaseController<BlogPost> {
   constructor() {
@@ -16,17 +17,13 @@ class BlogPostController extends BaseController<BlogPost> {
     this.execFindOneByParams(req, res);
   }
 
-  parseBody(req: Request) {
-    return JSON.parse(req.body.body);
-  }
-
   create(req: Request, res: Response) {
-    req.body.body = this.parseBody(req);
+    req.body.body = parseBody(req);
     this.execCreate(req, res);
   }
 
   edit(req: Request, res: Response) {
-    req.body.body = this.parseBody(req);
+    req.body.body = parseBody(req);
     this.execUpdate(req, res);
   }
 

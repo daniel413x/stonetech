@@ -264,6 +264,7 @@ p {
 
 .location-icon {
   display: flex;
+  align-items: center;
   margin-bottom: 0.225rem;
 }
 
@@ -550,6 +551,21 @@ p {
   font-size: 1.5rem;
   margin: 0 0 1rem;
   font-weight: 900;
+}
+
+.szh-menu {
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid var(--primary-gray-light-transparent);
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+}
+
+.dropdown-trigger .triangle-down {
+  transform: scale(0.7);
+  margin-right: 0.25rem;
 }
 
 #navbar .nav-buttons-ul .nav-button:hover {
@@ -1076,121 +1092,94 @@ p {
   margin: 16px var(--side-margins-non-widescreen);
 }
 
-#front-page .projects .project-for-display {
-  flex: 0 0 360px;
-  width: 360px;
+.gallery-project {
   position: relative;
+  opacity: 0;
+  transition: transform 0.35s ease-out;
 }
 
-#front-page .projects .project-for-display .inactive-bar {
-  background-color: var(--inactive-element);
-  width: 100%;
-  height: 3px;
-  position: absolute;
+.gallery-project.anim-1 {
+  transform: translate(-20px, -20px);
 }
 
-#front-page .projects .project-for-display .active-bar {
-  background-color: var(--primary-accent);
-  width: 0%;
-  height: 3px;
+.gallery-project.anim-2 {
+  transform: translate(20px, -20px);
+}
+
+.gallery-project.anim-3 {
+  transform: translate(-20px, 20px);
+}
+
+.gallery-project.anim-4 {
+  transform: translate(20px, 20px);
+}
+
+.gallery-project.show, .gallery-project.edited {
+  opacity: 1;
+  transform: none;
+}
+
+.gallery-project .overlay {
+  background-color: rgba(255, 255, 255, 0.95);
   position: absolute;
+  top: 50%;
   left: 50%;
-  transition: all .1s ease-out;
-}
-
-#front-page .projects .project-for-display:hover .active-bar {
-  background-color: var(--primary-accent);
-  width: 100%;
-  height: 3px;
-  left: 0;
-  position: absolute;
-}
-
-#front-page .projects .project-for-display .image-wrapper {
-  height: 200px;
-  position: relative;
-}
-
-#front-page .projects .project-for-display .image-wrapper .angle-deco {
-  border-left: 2px solid var(--primary-white);
-  border-top: 2px solid var(--primary-white);
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  visibility: hidden;
-}
-
-#front-page .projects .project-for-display:hover .image-wrapper .angle-deco {
-  visibility: visible;
-}
-
-#front-page .projects .project-for-display .image-wrapper .angle-deco.upper-left {
-  top: 20px;
-  left: 20px;
-}
-
-#front-page .projects .project-for-display .image-wrapper .angle-deco.upper-right {
-  transform: rotate(90deg);
-  top: 20px;
-  right: 20px;
-}
-
-#front-page .projects .project-for-display .image-wrapper .angle-deco.lower-right {
-  transform: rotate(180deg);
-  bottom: 20px;
-  right: 20px;
-}
-
-#front-page .projects .project-for-display .image-wrapper .angle-deco.lower-left {
-  transform: rotate(-90deg);
-  bottom: 20px;
-  left: 20px;
-}
-
-#front-page .projects .project-for-display .image-wrapper {
-  overflow: hidden;
-}
-
-#front-page .projects .project-for-display .image-wrapper img {
-  transform: scale(1.035);
-  width: 360px;
-  height: 200px;
-}
-
-#front-page .projects .project-for-display:hover .image-wrapper img {
-  transform: scale(1);
-  transition: all 0.1s ease-out;
-}
-
-#front-page .projects .project-for-display .info {
-  margin: 1.313rem 2rem 1.85rem;
-}
-
-#front-page .projects .project-for-display .info .title-row {
-  font-size: 0.875rem;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  transition: all 0.075s linear;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0;
   display: flex;
-  margin: 0.5rem 0.25rem;
-}
-
-#front-page .projects .project-for-display .info .title-row .dots {
-  margin-right: 1.5rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#front-page .projects .project-for-display:hover .info .title-row .dots .dot {
-  background-color: var(--primary-accent);
+.gallery-project:hover .overlay, .gallery-project .overlay:focus-within, .gallery-project.edited .overlay {
+  opacity: 1;
 }
 
-#front-page .projects .project-for-display .info .title-row .title-text {
-  text-decoration: inherit;
-  color: var(--primary-text);
-  font-weight: 600;
-  font-size: 1.25rem;
+.gallery-project .overlay .client {
+  font-size: 0.875rem;
+  font-weight: 200;
 }
 
-#front-page .projects .project-for-display:hover .info .title-row .title-text {
+.gallery-project .overlay .name {
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0.75rem 0 1rem;
+}
+
+.gallery-project .overlay .read-more {
   text-decoration: underline;
+  font-weight: 900;
+  color: var(--primary-text-light);
+}
+
+.gallery-project.edited .overlay .read-more {
+  opacity: 0.5;
+}
+
+.gallery-project img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 750px;
+  max-height: 750px;
+}
+
+.gallery-project.sm {
+  width: 360px;
+  height: 230px;
+  overflow: hidden;
+}
+
+.gallery-project.lg, .gallery-project.edited {
+   flex: 0 0 360px;
+   height: 480px;
+   overflow: hidden;
 }
 
 #front-page .projects .show-more-button {
@@ -1721,6 +1710,10 @@ p {
   width: 100%;
 }
 
+.slider.correct-width .slick-track, .slider.correct-width .slick-slide {
+  width: unset !important;
+}
+
 #project-page .slider {
   position: relative;
   overflow-x: hidden;
@@ -1756,8 +1749,14 @@ p {
   border: 2px solid var(--primary-dark-light);
 }
 
+/* #project-page .slider .thumbnails button:focus-visible { */
+#project-page .slider .thumbnails button:focus-visible .thumbnail:not(.selected) {
+  border: 2px solid var(--secondary-accent);
+}
+
 #project-page .slider .thumbnails .thumbnail.selected {
   border: 2px solid var(--primary-accent);
+  filter: brightness(1.1);  
 }
 
 #project-page .slider .thumbnails-wrapper {
@@ -2647,6 +2646,139 @@ p {
 #employees .projects-list .project .employee {
   width: max-content;
   display: flex;
+}
+
+#employees .project-editor .slider {
+  margin-top: 70px;
+}
+
+#employees .project-editor .slider .image-control .button-overlay {
+  width: 100%;
+}
+/* 
+#employees .project-editor .slider .image-control .button-overlay:focus-active img {
+  outline: none;
+} */
+
+#employees .project-editor .slider .image-control .button-overlay:focus-visible::after {
+  content: '';
+  width: 99%;
+  height: 98%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  outline: var(--focus-outline-bold);
+  z-index: 1;
+}
+
+#employees .project-editor .slider .buttons {
+  position: absolute;
+  top: 5rem;
+  right: 0rem;
+  transform: translate(-50%, -50%);
+  display: flex;
+  z-index: 1;
+  grid-gap: 0.25rem;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+#employees .project-editor .slider .buttons .delete-button svg path {
+  fill: red;
+}
+
+#employees .project-editor .slider .buttons .make-thumbnail-button {
+  position: relative;
+}
+
+#employees .project-editor .slider .buttons .make-thumbnail-button .checkmark-icon {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0;
+}
+
+#employees .project-editor .page-header {
+  margin: 0;
+}
+
+#employees .project-editor .architect .image-control, #employees .project-editor .architect .image-control .button-overlay {
+  width: 105px;
+}
+
+#employees .project-editor .architect .dropdown-trigger {
+  font-weight: 600;
+}
+
+#employees .project-editor .architect .dropdown-trigger:focus-visible {
+  outline: var(--focus-outline);
+}
+
+#employees .project-editor .architect .dropdown-trigger.error {
+  box-shadow: var(--error-box-shadow);
+}
+
+#employees .project-editor .architect .employee-dropdown-item {
+  display: flex;
+  grid-gap: 0.75rem;
+  align-items: center;
+  width: 250px;
+  padding: 0 0.5rem;
+}
+
+#employees .project-editor .architect .employee-dropdown-item .avatar {
+  width: 50px;
+  height: 50px;
+  margin: 0
+}
+
+#employees .project-editor .info .pairs li {
+  position: relative;
+}
+
+#employees .project-editor .info .pairs .remove-info-button {
+  position: absolute;
+  top: 50%;
+  right: -5rem;
+  transform: translate(-0%, -50%);
+  display: flex;
+  padding: 0.25rem;
+}
+
+#employees .project-editor .image-control .buttons {
+  top: 8%;
+  right: 4%;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+#employees .project-editor .lower-row .add-buttons {
+  display: flex;
+}
+
+#employees .project-editor .lower-row .other-fields {
+  margin-top: 2rem;
+  display: flex;
+  grid-gap: 2rem;
+}
+
+#employees .project-editor .lower-row .other-fields .col {
+  display: flex;
+  flex-direction: column;
+}
+
+#employees .project-editor .bottom-row {
+  margin-left: auto;
+  display: flex;
+}
+
+#employees .project-editor .gallery-project.edited .text-control.error {
+  box-shadow: var(--error-box-shadow);  
+}
+
+#employees .project-editor .location-icon.error .text-control {
+  box-shadow: var(--error-box-shadow);  
 }
 
 #footer {

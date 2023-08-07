@@ -82,7 +82,6 @@ function ProjectList() {
         {loading ? null : (
           <PageControl
             page={page || 1}
-            // PAGE0 change page || 1 to page || 0
             pageLimit={pageLimit}
             pageLimitReached={pageLimitReached}
             changePage={changePage}

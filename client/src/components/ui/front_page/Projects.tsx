@@ -20,7 +20,7 @@ function ProjectForDisplay({
   image,
 }: ProjectForDisplayProps) {
   return (
-    <div className="project-for-display">
+    <div className="gallery-project">
       <div className="image-wrapper">
         <img src={image} alt="Project" />
         <div className="angle-deco upper-left" />

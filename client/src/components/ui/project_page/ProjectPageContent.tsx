@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import BreadcrumbTrail from '../BreadcrumbTrail';
 import { fetchProject } from '../../../http/projectAPI';
-import { IProject } from '../../../types/types';
+import { IProject, ProjectInfo } from '../../../types/types';
 import LocationIcon from '../LocationIcon';
 import Slider from './Slider';
 import List from '../List';
@@ -82,7 +82,7 @@ function ProjectPageContent() {
                 Project information
               </h2>
               <List
-                items={info as [string, string][]}
+                items={info as ProjectInfo}
                 className="pairs"
                 renderAs={(arr) => (
                   <li key={arr[0]}>

@@ -19,7 +19,7 @@ router.post(
   (req, res) => ProjectController.create(req, res),
 );
 router.put(
-  '/',
+  '/:id',
   checkRoleMiddleware(EMPLOYEE),
   (req, res) => ProjectController.edit(req, res),
 );

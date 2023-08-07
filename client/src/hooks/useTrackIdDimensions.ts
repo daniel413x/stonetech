@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 
-const useTrackDimensions: () => {
+const useTrackIdDimensions: (id: string) => {
   height: number | undefined;
   width: number | undefined;
-} = () => {
-  const [height, setHeight] = useState<number | undefined>(477);
+} = (id) => {
   const [width, setWidth] = useState<number | undefined>(0);
+  const [height, setHeight] = useState<number | undefined>(0);
   useEffect(() => {
     const update = () => {
-      const clientHeight = window.innerHeight || 0;
-      const clientWidth = window.innerWidth || 0;
-      setHeight(clientHeight);
+      const element = document.getElementById(id);
+      const clientWidth = element?.clientWidth;
+      const clientHeight = element?.clientHeight;
       setWidth(clientWidth);
+      setHeight(clientHeight);
     };
     window.addEventListener('resize', update);
     update();
@@ -20,4 +21,4 @@ const useTrackDimensions: () => {
   return { height, width };
 };
 
-export default useTrackDimensions;
+export default useTrackIdDimensions;

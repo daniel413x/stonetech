@@ -11,6 +11,11 @@ router.get(
   authMiddleware,
   (req, res) => EmployeeController.auth(req, res),
 );
+router.get(
+  '/',
+  checkRoleMiddleware(EMPLOYEE),
+  (req, res) => EmployeeController.get(req, res),
+);
 router.post(
   '/',
   checkRoleMiddleware(ADMIN),

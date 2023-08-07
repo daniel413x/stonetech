@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import useTrackDimensions from './useTrackDimensions';
+import useTrackIdDimensions from './useTrackIdDimensions';
 
 const useWindowScrollLimit: (pageLimitReached?: boolean) => boolean = (pageLimitReached) => {
-  const { height: footerHeight } = useTrackDimensions('footer');
+  const { height: footerHeight } = useTrackIdDimensions('footer');
   const [reachedLimit, setReachedLimit] = useState<boolean>(false);
   useEffect(() => {
     const update = () => {

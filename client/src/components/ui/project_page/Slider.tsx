@@ -1,16 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import useKeyPress from '../../../hooks/useKeyPress';
 import { ReactComponent as TriangleRight } from '../../../assets/icons/triangle-right.svg';
-import useTrackDimensions from '../../../hooks/useTrackDimensions';
+import useTrackRefDimensions from '../../../hooks/useTrackRefDimensions';
 import useActiveElement from '../../../hooks/useActiveElement';
+import { ReactComponent as Trash } from '../../../assets/icons/trash.svg';
+import { ReactComponent as SelectThumbnailIcon } from '../../../assets/icons/select-thumbnail-icon.svg';
+import { ReactComponent as CheckmarkIcon } from '../../../assets/icons/checkmark.svg';
 import useInterval from '../../../hooks/useInterval';
+import ImageControl from '../employee/ImageControl';
+import newSliderImageJpg from '../../../assets/images/new-slider-image.jpg';
+import Button from '../Button';
+import { FormFile } from '../../../types/types';
 
 interface ProjectSliderProps {
-  images: string[];
+  images?: string[];
+  editorImages?: FormFile[];
+  handleAddImage?: () => void;
+  handleRemoveImage?: (i: number) => void;
+  handleSelectThumbnail?: (i: number) => void;
+  editedProjectId?: string;
+  selectedThumbnail?: number;
+  handleChangeImage?: (file: FormFile, index: number) => void;
+  register?: UseFormRegister<FieldValues>;
 }
 
-function ProjectSlider({ images }: ProjectSliderProps) {
+function ProjectSlider({
+  images, handleAddImage, handleRemoveImage, handleSelectThumbnail, selectedThumbnail, handleChangeImage, register, editorImages,
+}: ProjectSliderProps) {
+  const imagesLen = (images || editorImages)!.length;
+  const editorMode = handleAddImage;
   const [selected, setSelected] = useState<number>(0);
   const rightPress = useKeyPress('ArrowRight');
   const leftPress = useKeyPress('ArrowLeft');
@@ -44,7 +64,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
   }, [enterPress]);
   useInterval(() => scrollLeft(), isScrollingLeft, 5);
   useInterval(() => scrollRight(), isScrollingRight, 5);
-  const { width: thumbnailsWidth } = useTrackDimensions(thumbnailsRef);
+  const { width: thumbnailsWidth } = useTrackRefDimensions(thumbnailsRef);
   const settings = {
     infinite: true,
     speed: 1000,
@@ -56,7 +76,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
   };
   const thumbnails: any = document.getElementsByClassName('thumbnail');
   const firstSlideReached = selected === 0;
-  const lastSlideReached = selected === images.length - 1;
+  const lastSlideReached = selected === imagesLen - 1;
   const selectSlide = (index: number) => {
     if (blockActions) {
       return;
@@ -107,7 +127,7 @@ function ProjectSlider({ images }: ProjectSliderProps) {
     } else {
       setShowScrollButtons(false);
     }
-  }, [thumbnailsWidth]);
+  }, [thumbnailsWidth, imagesLen]);
   useEffect(() => {
     tempBlock();
   }, [selected]);
@@ -122,37 +142,117 @@ function ProjectSlider({ images }: ProjectSliderProps) {
     }
   }, [rightPress]);
   useEffect(() => tempBlock(), [selected]);
+  const handleAddImageAndSelectLast = () => {
+    handleAddImage!();
+    selectSlide(imagesLen);
+  };
   return (
-    <div className="slider">
+    <div className={`slider ${imagesLen < 2 && 'correct-width'}`}>
+      <div className="buttons">
+        {handleSelectThumbnail && (
+        <Button
+          className="make-thumbnail-button"
+          title="Make thumbnail"
+          buttonStyle="icon-button"
+          disabled={imagesLen < 2}
+          onClick={() => {
+            handleSelectThumbnail(selected);
+          }}
+        >
+          <SelectThumbnailIcon />
+          {selectedThumbnail === selected && (
+          <CheckmarkIcon
+            className="checkmark-icon"
+          />
+          )}
+        </Button>
+        )}
+        {handleRemoveImage && (
+        <Button
+          className="delete-button"
+          title="Delete"
+          buttonStyle="icon-button"
+          disabled={imagesLen < 2}
+          onClick={() => handleRemoveImage(selected)}
+        >
+          <Trash
+            className="icon"
+          />
+        </Button>
+        )}
+      </div>
       <Slider
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...settings}
         ref={sliderRef}
       >
-        {images.map((image, i) => (
-          <img
+        {editorImages?.map((img, i) => (
+          <li key={i}>
+            <ImageControl
+              register={register!}
+              registerName={img.filename}
+              // eslint-disable-next-line no-nested-ternary
+              initial={img.url}
+              className="cover-image"
+              index={i}
+              returnFormFile={(bloburl) => {
+                handleChangeImage!(bloburl, i);
+              }}
+              tabIndex={i === selected ? 0 : -1}
+            />
+          </li>
+        ))}
+        {images?.map((str, i) => (
+          <li key={i}>
+            <img
             // eslint-disable-next-line react/no-array-index-key
-            key={`${image}${i}`}
-            src={`${process.env.REACT_APP_API_URL}${image}`}
-            className="cover-image"
-            alt=""
-          />
+              key={`${str}${i}`}
+              src={`${process.env.REACT_APP_API_URL}${str}`}
+              className="cover-image"
+              alt=""
+            />
+          </li>
         ))}
       </Slider>
       <div className="thumbnails-wrapper">
         <ul className="thumbnails" ref={thumbnailsRef}>
-          {images.map((image, i) => (
+          {images?.map((str, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <li key={`${image}${i}`}>
-              <button onClick={() => selectSlide(i!)} key={`${image}${i! + 1}`} type="button">
+            <li key={`${str}${i}`}>
+              <button onClick={() => selectSlide(i!)} type="button">
                 <img
-                  src={`${process.env.REACT_APP_API_URL}${image}`}
+              // eslint-disable-next-line no-nested-ternary
+                  src={editorMode ? str : `${process.env.REACT_APP_API_URL}${str}`}
                   alt=""
                   className={`thumbnail ${i === selected ? 'selected' : undefined}`}
                 />
               </button>
             </li>
           ))}
+          {editorImages?.map(({ filename, url }, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={`${filename}${i}`}>
+              <button onClick={() => selectSlide(i!)} type="button">
+                <img
+              // eslint-disable-next-line no-nested-ternary
+                  src={url}
+                  alt=""
+                  className={`thumbnail ${i === selected ? 'selected' : undefined}`}
+                />
+              </button>
+            </li>
+          ))}
+          {editorMode && (
+          <li key="add-image-button">
+            <button className="add-image-button" onClick={handleAddImageAndSelectLast} key="add-image-button" type="button">
+              <img
+                src={newSliderImageJpg}
+                alt=""
+                className="thumbnail"
+              />
+            </button>
+          </li>
+          )}
         </ul>
         <button
           className={`scroll-button left ${showScrollButtons && 'shown'}`}
@@ -165,6 +265,8 @@ function ProjectSlider({ images }: ProjectSliderProps) {
             className="icon"
           />
         </button>
+        {imagesLen > 1
+        && (
         <button
           className={`scroll-button right ${showScrollButtons && 'shown'}`}
           onMouseDown={() => setIsScrollingRight(true)}
@@ -176,9 +278,22 @@ function ProjectSlider({ images }: ProjectSliderProps) {
             className="icon"
           />
         </button>
+        )}
       </div>
     </div>
   );
 }
+
+ProjectSlider.defaultProps = {
+  handleAddImage: undefined,
+  handleRemoveImage: undefined,
+  editedProjectId: undefined,
+  handleSelectThumbnail: undefined,
+  selectedThumbnail: undefined,
+  handleChangeImage: undefined,
+  register: undefined,
+  editorImages: undefined,
+  images: undefined,
+};
 
 export default ProjectSlider;
